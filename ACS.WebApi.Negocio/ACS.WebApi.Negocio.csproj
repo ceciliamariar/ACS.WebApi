@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ACS.WebApi.BaseDados\ACS.WebApi.BaseDados.csproj" />
+    <ProjectReference Include="..\ACS.WebApi.Dominio\ACS.WebApi.Dominio.csproj" />
+  </ItemGroup>
+
+</Project>
