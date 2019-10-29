@@ -14,7 +14,7 @@ namespace ACS.WebApi.Negocio
     public interface INegocio<TEntidade>  where TEntidade : EntidadeBase
     {
        
-        void Insert(TEntidade obj);
+         void Insert(TEntidade obj);
 
          void Update(TEntidade obj);
         IQueryable<TEntidade> Select();

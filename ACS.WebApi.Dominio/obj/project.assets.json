@@ -2579,11 +2579,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cecilia.mariar\\source\\repos\\ACS.WebApi-v1\\ACS.WebApi.Dominio\\ACS.WebApi.Dominio.csproj",
+      "projectUniqueName": "C:\\Users\\cecilia.mariar\\source\\repos\\TCC\\ACS.WebApi-v1\\ACS.WebApi.Dominio\\ACS.WebApi.Dominio.csproj",
       "projectName": "ACS.WebApi.Dominio",
-      "projectPath": "C:\\Users\\cecilia.mariar\\source\\repos\\ACS.WebApi-v1\\ACS.WebApi.Dominio\\ACS.WebApi.Dominio.csproj",
+      "projectPath": "C:\\Users\\cecilia.mariar\\source\\repos\\TCC\\ACS.WebApi-v1\\ACS.WebApi.Dominio\\ACS.WebApi.Dominio.csproj",
       "packagesPath": "C:\\Users\\cecilia.mariar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cecilia.mariar\\source\\repos\\ACS.WebApi-v1\\ACS.WebApi.Dominio\\obj\\",
+      "outputPath": "C:\\Users\\cecilia.mariar\\source\\repos\\TCC\\ACS.WebApi-v1\\ACS.WebApi.Dominio\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

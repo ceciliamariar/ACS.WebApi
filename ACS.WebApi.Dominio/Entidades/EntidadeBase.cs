@@ -8,13 +8,10 @@ namespace ACS.WebApi.Dominio.Entidades
 {
     public abstract class EntidadeBase
     {
-
         [Required]
         public DateTime DataCriacao { get; set; }
         [Required]
         public DateTime DataUltimaAtulizacao { get; set; }
-        [Required]
-        public int IdUsuario { get; set; }
         public Usuario UsuarioUltimaAtualizacao { get; set; }
 
     }

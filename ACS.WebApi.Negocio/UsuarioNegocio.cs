@@ -1,4 +1,5 @@
 ﻿using ACS.WebApi.Dominio.Entidades;
+using ACS.WebApi.Dominio.Entradas;
 using ACS.WebApi.Dominio.Repositorios.Interfaces;
 using ACS.WebApi.Dominio.Saidas;
 using System;
@@ -31,6 +32,21 @@ namespace ACS.WebApi.Negocio
                                                     Perfil = a.Perfil
                                                         }));
             return saida;
+        }
+
+        public void Insert(UsuarioEntrada obj)
+        {
+            Usuario usuario = new Usuario()
+            {
+                Email = obj.Email,
+                Login = obj.Login,
+                Nome = obj.Nome,
+                Perfil = obj.Perfil,
+                Senha = obj.Senha
+
+            };
+
+            base.Insert(usuario);
         }
     }
 }

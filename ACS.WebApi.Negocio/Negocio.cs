@@ -15,11 +15,12 @@ namespace ACS.WebApi.Negocio
     {
         public IRepositorio<TEntidade> Repositorio { get; set; }
 
-        public void Insert(TEntidade obj)
+        public virtual void Insert(TEntidade obj)
         {
             Repositorio.Insert(obj);
+            Repositorio.Commit();
         }
-        public void Update(TEntidade obj)
+        public virtual void Update(TEntidade obj)
         {
             Repositorio.Update(obj);
         }
@@ -40,7 +41,7 @@ namespace ACS.WebApi.Negocio
         {
             return Repositorio.Join(query, tabela);
         }
-        public void Delete(int id)
+        public virtual void Delete(int id)
         {
             Repositorio.Delete(id);
         }

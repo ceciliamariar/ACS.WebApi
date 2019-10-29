@@ -3238,11 +3238,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cecilia.mariar\\source\\repos\\ACS.WebApi-v1\\ACS.WebApi.BaseDados\\ACS.WebApi.BaseDados.csproj",
+      "projectUniqueName": "C:\\Users\\cecilia.mariar\\source\\repos\\TCC\\ACS.WebApi-v1\\ACS.WebApi.BaseDados\\ACS.WebApi.BaseDados.csproj",
       "projectName": "ACS.WebApi.BaseDados",
-      "projectPath": "C:\\Users\\cecilia.mariar\\source\\repos\\ACS.WebApi-v1\\ACS.WebApi.BaseDados\\ACS.WebApi.BaseDados.csproj",
+      "projectPath": "C:\\Users\\cecilia.mariar\\source\\repos\\TCC\\ACS.WebApi-v1\\ACS.WebApi.BaseDados\\ACS.WebApi.BaseDados.csproj",
       "packagesPath": "C:\\Users\\cecilia.mariar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cecilia.mariar\\source\\repos\\ACS.WebApi-v1\\ACS.WebApi.BaseDados\\obj\\",
+      "outputPath": "C:\\Users\\cecilia.mariar\\source\\repos\\TCC\\ACS.WebApi-v1\\ACS.WebApi.BaseDados\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3261,8 +3261,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\cecilia.mariar\\source\\repos\\ACS.WebApi-v1\\ACS.WebApi.Dominio\\ACS.WebApi.Dominio.csproj": {
-              "projectPath": "C:\\Users\\cecilia.mariar\\source\\repos\\ACS.WebApi-v1\\ACS.WebApi.Dominio\\ACS.WebApi.Dominio.csproj"
+            "C:\\Users\\cecilia.mariar\\source\\repos\\TCC\\ACS.WebApi-v1\\ACS.WebApi.Dominio\\ACS.WebApi.Dominio.csproj": {
+              "projectPath": "C:\\Users\\cecilia.mariar\\source\\repos\\TCC\\ACS.WebApi-v1\\ACS.WebApi.Dominio\\ACS.WebApi.Dominio.csproj"
             }
           }
         }

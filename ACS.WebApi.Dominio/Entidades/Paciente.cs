@@ -22,9 +22,12 @@ namespace ACS.WebApi.Dominio.Entidades
         [StringLength(1)]
         public char Sexo { get; set; }
 
+        
         [Required]
         [ForeignKey("FKEnderecoPaciente")]
         public int IdEndereco { get; set; }
+
+        [Required]
         public Endereco Endereco { get; set; }
         public List<PacienteRemedio> PacienteRemedios { get; set; }
         public List<Resposta> Respostas { get; set; }

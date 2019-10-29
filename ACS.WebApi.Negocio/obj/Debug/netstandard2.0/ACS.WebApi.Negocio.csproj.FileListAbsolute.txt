@@ -12,3 +12,17 @@ C:\Users\cecilia.mariar\source\repos\ACS.WebApi\ACS.WebApi.Negocio\bin\Debug\net
 C:\Users\cecilia.mariar\source\repos\ACS.WebApi\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\ACS.WebApi.BaseDados.pdb
 C:\Users\cecilia.mariar\source\repos\ACS.WebApi\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\ACS.WebApi.Dominio.pdb
 C:\Users\cecilia.mariar\source\repos\ACS.WebApi\ACS.WebApi.Negocio\obj\Debug\netstandard2.0\ACS.WebApi.Negocio.csproj.CopyComplete
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\ACS.WebApi.Negocio.deps.json
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\ACS.WebApi.Negocio.dll
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\ACS.WebApi.Negocio.pdb
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\ACS.WebApi.BaseDados.dll
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\ACS.WebApi.Dominio.dll
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\ACS.WebApi.BaseDados.pdb
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\ACS.WebApi.Dominio.pdb
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\obj\Debug\netstandard2.0\ACS.WebApi.Negocio.csprojAssemblyReference.cache
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\obj\Debug\netstandard2.0\ACS.WebApi.Negocio.csproj.CoreCompileInputs.cache
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\obj\Debug\netstandard2.0\ACS.WebApi.Negocio.AssemblyInfoInputs.cache
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\obj\Debug\netstandard2.0\ACS.WebApi.Negocio.AssemblyInfo.cs
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\obj\Debug\netstandard2.0\ACS.WebApi.Negocio.csproj.CopyComplete
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\obj\Debug\netstandard2.0\ACS.WebApi.Negocio.dll
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\obj\Debug\netstandard2.0\ACS.WebApi.Negocio.pdb

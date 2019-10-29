@@ -45,8 +45,6 @@ namespace ACS.WebApi.BaseDados.Migrations
                     b.Property<string>("GeoLocalizacao")
                         .HasMaxLength(1000);
 
-                    b.Property<int>("IdUsuario");
-
                     b.Property<int>("Numero");
 
                     b.Property<int?>("UsuarioUltimaAtualizacaoId");
@@ -77,13 +75,11 @@ namespace ACS.WebApi.BaseDados.Migrations
 
                     b.Property<int>("IdPaciente");
 
-                    b.Property<int>("IdUsuario");
-
                     b.Property<int>("PAdist");
 
                     b.Property<int>("PAsist");
 
-                    b.Property<int?>("PacienteId");
+                    b.Property<int>("PacienteId");
 
                     b.Property<bool>("Pedido");
 
@@ -112,11 +108,9 @@ namespace ACS.WebApi.BaseDados.Migrations
 
                     b.Property<DateTime>("DataUltimaAtulizacao");
 
-                    b.Property<int?>("EnderecoId");
+                    b.Property<int>("EnderecoId");
 
                     b.Property<int>("IdEndereco");
-
-                    b.Property<int>("IdUsuario");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -155,8 +149,6 @@ namespace ACS.WebApi.BaseDados.Migrations
 
                     b.Property<DateTime>("DataVisita");
 
-                    b.Property<int>("IdUsuario");
-
                     b.Property<int?>("PacienteId");
 
                     b.Property<int?>("RemedioId");
@@ -188,8 +180,6 @@ namespace ACS.WebApi.BaseDados.Migrations
                         .IsRequired()
                         .HasMaxLength(500);
 
-                    b.Property<int>("IdUsuario");
-
                     b.Property<int?>("UsuarioUltimaAtualizacaoId");
 
                     b.HasKey("Id");
@@ -213,8 +203,6 @@ namespace ACS.WebApi.BaseDados.Migrations
                         .IsRequired()
                         .HasMaxLength(500);
 
-                    b.Property<int>("IdUsuario");
-
                     b.Property<int?>("UsuarioUltimaAtualizacaoId");
 
                     b.HasKey("Id");
@@ -237,8 +225,6 @@ namespace ACS.WebApi.BaseDados.Migrations
                     b.Property<DateTime>("DataUltimaAtulizacao");
 
                     b.Property<DateTime>("DataVisita");
-
-                    b.Property<int>("IdUsuario");
 
                     b.Property<int?>("PacienteId");
 
@@ -272,8 +258,6 @@ namespace ACS.WebApi.BaseDados.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(100);
-
-                    b.Property<int>("IdUsuario");
 
                     b.Property<string>("Login")
                         .IsRequired()

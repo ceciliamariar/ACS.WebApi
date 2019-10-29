@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ACS.WebApi.Dominio.Entidades;
+using ACS.WebApi.Dominio.Entradas;
 using ACS.WebApi.Dominio.Saidas;
 using ACS.WebApi.Negocio;
 using Microsoft.AspNetCore.Http;
@@ -11,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ACS.WebApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController] 
     public class UsuariosController : ControllerBase
     {
         public IUsuarioNegocio UsuarioNegocio { get; set; }
@@ -47,8 +48,19 @@ namespace ACS.WebApi.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult Post([FromBody] UsuarioEntrada value)
         {
+            try
+            {
+                Task<IEnumerable<UsuarioSaida>>.Run(() => UsuarioNegocio.Insert(value));
+
+                return Ok();
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
         // PUT api/values/5

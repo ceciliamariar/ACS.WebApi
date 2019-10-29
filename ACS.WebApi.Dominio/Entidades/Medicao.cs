@@ -12,9 +12,6 @@ namespace ACS.WebApi.Dominio.Entidades
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
-        [ForeignKey("FKPacienteMedicao")]
-        public int IdPaciente { get; set; }
-        [Required]
         public DateTime DataHora { get; set; }
         [Required]
         public bool Rotina { get; set; }
@@ -28,6 +25,13 @@ namespace ACS.WebApi.Dominio.Entidades
         public int FC { get; set; }
         [StringLength(500)]
         public string Comentario { get; set; }
+
+        [ForeignKey("FKPacienteMedicao")]
+        [Required]
+        public int IdPaciente { get; set; }
+
+
+        [Required]
         public Paciente Paciente { get; set; }
 
 

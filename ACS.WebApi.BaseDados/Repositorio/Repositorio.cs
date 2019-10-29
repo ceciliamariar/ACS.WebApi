@@ -23,10 +23,14 @@ namespace ACS.WebApi.BaseDados.Repositorios
         }
         public void Insert(TEntidade obj)
         {
+            obj.DataCriacao = DateTime.Now;
+            obj.DataUltimaAtulizacao = DateTime.Now;
             BdEntidade.Add(obj);
         }
         public void Update(TEntidade obj)
         {
+            obj.DataUltimaAtulizacao = DateTime.Now;
+
             BdEntidade.Update(obj);
         }
         public IQueryable<TEntidade> Select()
