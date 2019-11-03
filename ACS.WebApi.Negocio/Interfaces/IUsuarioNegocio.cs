@@ -11,5 +11,7 @@ namespace ACS.WebApi.Negocio
         IEnumerable<UsuarioSaida> RetornaUsuarios();
         
         void Insert(UsuarioEntrada obj);
+
+        bool VerificaUsuario(LoginEntrada loginEntrada);
     }
 }

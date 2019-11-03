@@ -2,13 +2,13 @@
 using ACS.WebApi.BaseDados.Repositorios;
 using ACS.WebApi.Dominio.Repositorios.Interfaces;
 using ACS.WebApi.Negocio;
+using ACS.WebApi.Util;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
 
 namespace ACS.WebApi
 {
@@ -18,7 +18,7 @@ namespace ACS.WebApi
         {
             Configuration = configuration;
         }
-         
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -29,21 +29,20 @@ namespace ACS.WebApi
             services.AddDbContext<Contexto>(opc =>
                     opc.UseSqlServer(Configuration.GetConnectionString("Conexao"),
                     x => x.MigrationsAssembly("ACS.WebApi.BaseDados")));
+            
+            InjecaoDependenciaNegocio.Injetar(services);
 
+            InjecaoDependenciaRepositorio.Injetar(services);
 
-
-            services.AddScoped<IUsuarioNegocio, UsuarioNegocio>();
-
-            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
-
-
+            //Criptografia por injecao de dependencia, caso necessario apenas trocar a criptografia
+            services.AddScoped<ICrypto, MD5Crypto>();
 
 
             services.AddSwaggerDocument(opcoes =>
-           {
-               opcoes.PostProcess = documento => { documento.Info.Title = "ACS Api"; };
-                //opcoes.OperationProcesso
-            }
+                                            {
+                                                opcoes.PostProcess = documento => { documento.Info.Title = "ACS Api"; };
+                                                //opcoes.OperationProcesso
+                                            }
             );
 
         }
@@ -63,7 +62,8 @@ namespace ACS.WebApi
                 if (internalUIRoute.StartsWith("/") && !internalUIRoute.StartsWith(request.PathBase))
                 {
                     return request.PathBase + internalUIRoute;
-                }else
+                }
+                else
                 {
                     return internalUIRoute;
                 }

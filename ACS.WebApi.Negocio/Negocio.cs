@@ -13,49 +13,54 @@ namespace ACS.WebApi.Negocio
 {
     public class Negocio<TEntidade> : INegocio<TEntidade>  where TEntidade : EntidadeBase
     {
-        public IRepositorio<TEntidade> Repositorio { get; set; }
+        public IRepositorio<TEntidade> _Repositorio { get; set; }
+
+        public Negocio(IRepositorio<TEntidade> repositorio)
+        {
+            _Repositorio = repositorio;
+        }
 
         public virtual void Insert(TEntidade obj)
         {
-            Repositorio.Insert(obj);
-            Repositorio.Commit();
+            _Repositorio.Insert(obj);
+            _Repositorio.Commit();
         }
         public virtual void Update(TEntidade obj)
         {
-            Repositorio.Update(obj);
+            _Repositorio.Update(obj);
         }
         public IQueryable<TEntidade> Select()
         {
-            return Repositorio.Select();
+            return _Repositorio.Select();
         }
         public async Task<List<TEntidade>> SelectAsync()
         {
-            return await Repositorio.SelectAsync();
+            return await _Repositorio.SelectAsync();
         }
         public IQueryable<TEntidade> Where(Expression<Func<TEntidade, bool>> where)
         {
-            return Repositorio.Where(where);
+            return _Repositorio.Where(where);
         }
 
         public IQueryable<TEntidade> Join(IQueryable<TEntidade> query,  Expression<Func<TEntidade, IProperty>> tabela)
         {
-            return Repositorio.Join(query, tabela);
+            return _Repositorio.Join(query, tabela);
         }
         public virtual void Delete(int id)
         {
-            Repositorio.Delete(id);
+            _Repositorio.Delete(id);
         }
         public async Task<int> CommitAsync()
         {
-            return await Repositorio.CommitAsync();
+            return await _Repositorio.CommitAsync();
         }
         public int Commit()
         {
-            return Repositorio.Commit();
+            return _Repositorio.Commit();
         }
         public void Dispose()
         {
-            Repositorio.Dispose();
+            _Repositorio.Dispose();
         }
 
     }
