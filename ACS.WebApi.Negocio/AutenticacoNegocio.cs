@@ -39,7 +39,9 @@ namespace ACS.WebApi.Negocio
                 var signingCredentials = new SigningCredentials(chave, SecurityAlgorithms.HmacSha256);
 
                 var token = new JwtSecurityToken(
-                     claims: credencial,
+                    issuer: "ACS.tcc.com",
+                    audience: "ACS.tcc.com",
+                    claims: credencial,
                      expires: DateTime.Now.AddHours(1),
                      signingCredentials: signingCredentials);
 

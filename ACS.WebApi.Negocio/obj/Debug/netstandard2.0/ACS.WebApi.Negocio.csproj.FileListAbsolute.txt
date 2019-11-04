@@ -26,3 +26,7 @@ C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\obj\De
 C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\obj\Debug\netstandard2.0\ACS.WebApi.Negocio.csproj.CopyComplete
 C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\obj\Debug\netstandard2.0\ACS.WebApi.Negocio.dll
 C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\obj\Debug\netstandard2.0\ACS.WebApi.Negocio.pdb
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\ACS.WebApi.Excecoes.dll
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\ACS.WebApi.Util.dll
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\ACS.WebApi.Excecoes.pdb
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\ACS.WebApi.Util.pdb

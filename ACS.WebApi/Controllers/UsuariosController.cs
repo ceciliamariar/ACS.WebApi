@@ -6,6 +6,7 @@ using ACS.WebApi.Dominio.Entidades;
 using ACS.WebApi.Dominio.Entradas;
 using ACS.WebApi.Dominio.Saidas;
 using ACS.WebApi.Negocio;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +14,7 @@ namespace ACS.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController] 
+    [Authorize()]
     public class UsuariosController : ControllerBase
     {
         public IUsuarioNegocio UsuarioNegocio { get; set; }

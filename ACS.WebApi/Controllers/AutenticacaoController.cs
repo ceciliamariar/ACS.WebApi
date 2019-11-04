@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ACS.WebApi.Controllers
 {
+
+    /// <summary>
+    /// Controlador responsável pela autenticação
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class AutenticacaoController : ControllerBase
@@ -13,12 +17,16 @@ namespace ACS.WebApi.Controllers
 
         private readonly IAutenticacaoNegocio _autenticacao;
 
-        public AutenticacaoController(IAutenticacaoNegocio autenticacao )
+        public AutenticacaoController(IAutenticacaoNegocio autenticacao)
         {
             _autenticacao = autenticacao;
         }
 
-
+        /// <summary>
+        ///  Soliciar token de acesso com duração de 1 hora
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         // POST: api/Autenticacao
         [AllowAnonymous]
         [HttpPost]
@@ -31,7 +39,7 @@ namespace ACS.WebApi.Controllers
                 return Ok(new { token });
 
             }
-            catch(UsuarioouSenhaInvalidoExcecao)
+            catch (UsuarioouSenhaInvalidoExcecao)
             {
                 return Unauthorized();
             }
@@ -42,18 +50,6 @@ namespace ACS.WebApi.Controllers
             }
 
 
-        }
-
-        // PUT: api/Autenticacao/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }
