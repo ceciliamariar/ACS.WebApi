@@ -6323,13 +6323,13 @@
     },
     "ACS.WebApi.Excecoes/1.0.0": {
       "type": "project",
-      "path": "../Excecoes/ACS.WebApi.Excecoes.csproj",
-      "msbuildProject": "../Excecoes/ACS.WebApi.Excecoes.csproj"
+      "path": "../ACS.WebApi.Excecoes/ACS.WebApi.Excecoes.csproj",
+      "msbuildProject": "../ACS.WebApi.Excecoes/ACS.WebApi.Excecoes.csproj"
     },
     "ACS.WebApi.Util/1.0.0": {
       "type": "project",
-      "path": "../Util/ACS.WebApi.Util.csproj",
-      "msbuildProject": "../Util/ACS.WebApi.Util.csproj"
+      "path": "../ACS.WebApi.Util/ACS.WebApi.Util.csproj",
+      "msbuildProject": "../ACS.WebApi.Util/ACS.WebApi.Util.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6378,11 +6378,11 @@
             "C:\\Users\\cecilia.mariar\\source\\repos\\TCC\\ACS.WebApi-v1\\ACS.WebApi.Dominio\\ACS.WebApi.Dominio.csproj": {
               "projectPath": "C:\\Users\\cecilia.mariar\\source\\repos\\TCC\\ACS.WebApi-v1\\ACS.WebApi.Dominio\\ACS.WebApi.Dominio.csproj"
             },
-            "C:\\Users\\cecilia.mariar\\source\\repos\\TCC\\ACS.WebApi-v1\\Excecoes\\ACS.WebApi.Excecoes.csproj": {
-              "projectPath": "C:\\Users\\cecilia.mariar\\source\\repos\\TCC\\ACS.WebApi-v1\\Excecoes\\ACS.WebApi.Excecoes.csproj"
+            "C:\\Users\\cecilia.mariar\\source\\repos\\TCC\\ACS.WebApi-v1\\ACS.WebApi.Excecoes\\ACS.WebApi.Excecoes.csproj": {
+              "projectPath": "C:\\Users\\cecilia.mariar\\source\\repos\\TCC\\ACS.WebApi-v1\\ACS.WebApi.Excecoes\\ACS.WebApi.Excecoes.csproj"
             },
-            "C:\\Users\\cecilia.mariar\\source\\repos\\TCC\\ACS.WebApi-v1\\Util\\ACS.WebApi.Util.csproj": {
-              "projectPath": "C:\\Users\\cecilia.mariar\\source\\repos\\TCC\\ACS.WebApi-v1\\Util\\ACS.WebApi.Util.csproj"
+            "C:\\Users\\cecilia.mariar\\source\\repos\\TCC\\ACS.WebApi-v1\\ACS.WebApi.Util\\ACS.WebApi.Util.csproj": {
+              "projectPath": "C:\\Users\\cecilia.mariar\\source\\repos\\TCC\\ACS.WebApi-v1\\ACS.WebApi.Util\\ACS.WebApi.Util.csproj"
             }
           }
         }

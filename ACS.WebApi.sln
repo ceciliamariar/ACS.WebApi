@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACS.WebApi.BaseDados", "ACS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACS.WebApi.Negocio", "ACS.WebApi.Negocio\ACS.WebApi.Negocio.csproj", "{256C57D7-1FF2-4DAB-8704-31C39CE4A439}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACS.WebApi.Util", "Util\ACS.WebApi.Util.csproj", "{1BDA0AF8-38F6-4DA6-B18F-628D1F7AA89B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACS.WebApi.Util", "ACS.WebApi.Util\ACS.WebApi.Util.csproj", "{1BDA0AF8-38F6-4DA6-B18F-628D1F7AA89B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACS.WebApi.Excecoes", "Excecoes\ACS.WebApi.Excecoes.csproj", "{92F1FBCA-84D8-41DF-AC62-58B291534A15}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACS.WebApi.Excecoes", "ACS.WebApi.Excecoes\ACS.WebApi.Excecoes.csproj", "{92F1FBCA-84D8-41DF-AC62-58B291534A15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

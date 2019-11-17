@@ -14,7 +14,7 @@ namespace ACS.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController] 
-    [Authorize()]
+    //[Authorize()]
     public class UsuariosController : ControllerBase
     {
         public IUsuarioNegocio UsuarioNegocio { get; set; }
@@ -25,11 +25,12 @@ namespace ACS.WebApi.Controllers
         }
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<UsuarioSaida>> Get()
+        [Route("/{login}")]
+        public ActionResult<IEnumerable<UsuarioSaida>> Get(string login)
         {
             try
             {
-                return Ok( Task<IEnumerable<UsuarioSaida>>.Run(() => UsuarioNegocio.RetornaUsuarios()));
+                return Ok(Task<IEnumerable<UsuarioSaida>>.Run(() => UsuarioNegocio.RetornaUsuarios(login)));
 
             }
             catch (Exception)

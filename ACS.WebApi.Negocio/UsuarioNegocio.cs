@@ -4,6 +4,8 @@ using ACS.WebApi.Dominio.Repositorios.Interfaces;
 using ACS.WebApi.Dominio.Saidas;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+
 namespace ACS.WebApi.Negocio
 {
     public class UsuarioNegocio : Negocio<Usuario>, IUsuarioNegocio
@@ -16,22 +18,26 @@ namespace ACS.WebApi.Negocio
             _criptografiaNegocio = criptografiaNegocio;
         }
 
-        public IEnumerable<UsuarioSaida> RetornaUsuarios()
+        public async Task<IEnumerable<UsuarioSaida>> RetornaUsuarios(string login)
         {
-            var usu = Select().ToList();
+            return await Task<List<UsuarioSaida>>.Run(
+                () =>
+                {
+                    var usu = this.Where(a=>a.Login.Contains(login)).ToList();
 
-            List<UsuarioSaida> saida = new List<UsuarioSaida>();
+                    List<UsuarioSaida> saida = new List<UsuarioSaida>();
 
 
-            usu.ForEach(a => saida.Add(new UsuarioSaida()
-            {
-                Email = a.Email,
-                Id = a.Id,
-                Login = a.Login,
-                Nome = a.Nome,
-                Perfil = a.Perfil
-            }));
-            return saida;
+                    usu.ForEach(a => saida.Add(new UsuarioSaida()
+                    {
+                        Email = a.Email,
+                        Id = a.Id,
+                        Login = a.Login,
+                        Nome = a.Nome,
+                        Perfil = a.Perfil
+                    }));
+                    return saida;
+                });
         }
 
         public void Insert(UsuarioEntrada obj)
@@ -53,7 +59,7 @@ namespace ACS.WebApi.Negocio
         {
             var usu = _Repositorio.Where(u => u.Login == loginEntrada.Login 
                                             && loginEntrada.Perfil == u.Perfil
-                                        ).FirstOrDefault(null);
+                                        ).FirstOrDefault();
             if (usu != null )
             {
                 return _criptografiaNegocio.ComparaValor(loginEntrada.Senha, usu.Senha);

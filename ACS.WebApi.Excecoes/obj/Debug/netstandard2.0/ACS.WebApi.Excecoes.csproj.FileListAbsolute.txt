@@ -1,0 +1,17 @@
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\Excecoes\bin\Debug\netstandard2.0\ACS.WebApi.Excecoes.deps.json
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\Excecoes\bin\Debug\netstandard2.0\ACS.WebApi.Excecoes.dll
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\Excecoes\bin\Debug\netstandard2.0\ACS.WebApi.Excecoes.pdb
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\Excecoes\obj\Debug\netstandard2.0\ACS.WebApi.Excecoes.csproj.CoreCompileInputs.cache
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\Excecoes\obj\Debug\netstandard2.0\ACS.WebApi.Excecoes.AssemblyInfoInputs.cache
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\Excecoes\obj\Debug\netstandard2.0\ACS.WebApi.Excecoes.AssemblyInfo.cs
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\Excecoes\obj\Debug\netstandard2.0\ACS.WebApi.Excecoes.dll
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\Excecoes\obj\Debug\netstandard2.0\ACS.WebApi.Excecoes.pdb
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Excecoes\bin\Debug\netstandard2.0\ACS.WebApi.Excecoes.deps.json
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Excecoes\bin\Debug\netstandard2.0\ACS.WebApi.Excecoes.dll
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Excecoes\bin\Debug\netstandard2.0\ACS.WebApi.Excecoes.pdb
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Excecoes\obj\Debug\netstandard2.0\ACS.WebApi.Excecoes.csprojAssemblyReference.cache
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Excecoes\obj\Debug\netstandard2.0\ACS.WebApi.Excecoes.csproj.CoreCompileInputs.cache
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Excecoes\obj\Debug\netstandard2.0\ACS.WebApi.Excecoes.AssemblyInfoInputs.cache
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Excecoes\obj\Debug\netstandard2.0\ACS.WebApi.Excecoes.AssemblyInfo.cs
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Excecoes\obj\Debug\netstandard2.0\ACS.WebApi.Excecoes.dll
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Excecoes\obj\Debug\netstandard2.0\ACS.WebApi.Excecoes.pdb

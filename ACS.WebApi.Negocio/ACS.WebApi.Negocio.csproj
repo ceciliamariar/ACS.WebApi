@@ -11,8 +11,8 @@
   <ItemGroup>
     <ProjectReference Include="..\ACS.WebApi.BaseDados\ACS.WebApi.BaseDados.csproj" />
     <ProjectReference Include="..\ACS.WebApi.Dominio\ACS.WebApi.Dominio.csproj" />
-    <ProjectReference Include="..\Excecoes\ACS.WebApi.Excecoes.csproj" />
-    <ProjectReference Include="..\Util\ACS.WebApi.Util.csproj" />
+    <ProjectReference Include="..\ACS.WebApi.Excecoes\ACS.WebApi.Excecoes.csproj" />
+    <ProjectReference Include="..\ACS.WebApi.Util\ACS.WebApi.Util.csproj" />
   </ItemGroup>
 
 </Project>

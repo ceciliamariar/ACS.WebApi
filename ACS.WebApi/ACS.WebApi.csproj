@@ -14,7 +14,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.OpenApi" Version="1.1.4" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
-    <PackageReference Include="NSwag.AspNetCore" Version="12.0.14" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.2.1" />
   </ItemGroup>
 
@@ -22,6 +22,7 @@
     <ProjectReference Include="..\ACS.WebApi.BaseDados\ACS.WebApi.BaseDados.csproj" />
     <ProjectReference Include="..\ACS.WebApi.Dominio\ACS.WebApi.Dominio.csproj" />
     <ProjectReference Include="..\ACS.WebApi.Negocio\ACS.WebApi.Negocio.csproj" />
+    <ProjectReference Include="..\ACS.WebApi.Util\ACS.WebApi.Util.csproj" />
   </ItemGroup>
 
 </Project>

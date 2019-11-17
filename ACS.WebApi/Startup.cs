@@ -1,18 +1,17 @@
 ﻿using ACS.WebApi.BaseDados;
-using ACS.WebApi.BaseDados.Repositorios;
-using ACS.WebApi.Dominio.Repositorios.Interfaces;
 using ACS.WebApi.Negocio;
 using ACS.WebApi.Util;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Swashbuckle.AspNetCore.Swagger;
+using System.Collections.Generic;
 using System.Text;
-
+using System.Threading.Tasks;
 namespace ACS.WebApi
 {
     public class Startup
@@ -32,7 +31,7 @@ namespace ACS.WebApi
             services.AddDbContext<Contexto>(opc =>
                     opc.UseSqlServer(_Configuration.GetConnectionString("Conexao"),
                     x => x.MigrationsAssembly("ACS.WebApi.BaseDados")));
-            
+
             InjecaoDependenciaNegocio.Injetar(services);
 
             InjecaoDependenciaRepositorio.Injetar(services);
@@ -45,10 +44,12 @@ namespace ACS.WebApi
             // e 
             //define configurações como chave,algoritmo,validade, data expiracao...
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options => {
+            .AddJwtBearer(options =>
+            {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuer = true,ValidateAudience = true,
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = "ACS.tcc.com",
@@ -56,63 +57,106 @@ namespace ACS.WebApi
                     IssuerSigningKey = new SymmetricSecurityKey(
                         Encoding.UTF8.GetBytes(_Configuration["ChaveSecreta"]))
                 };
+                options.Events = new JwtBearerEvents()
+                {
+                    OnTokenValidated = cotext =>
+                    {
+                        return Task.CompletedTask;
+                    },
+                    OnAuthenticationFailed = cotext =>
+                    {
+                        return Task.CompletedTask;
+                    },
+                };
 
-                //options.Events = new JwtBearerEvents
-                //{
-                //    OnAuthenticationFailed = context =>
-                //    {
-                //        return ;
-                //    },
-                //    OnTokenValidated = context =>
-                //    {
-                //        Console.WriteLine("Toekn válido...: " + context.SecurityToken);
-                //        return Task.CompletedTask;
-                //    }
-                //};
             });
-            services.AddSwaggerDocument(opcoes =>
-                                            {
-                                                opcoes.PostProcess = documento => { documento.Info.Title = "ACS Api"; };
-                                                //opcoes.OperationProcesso
-                                            }
-            );
+       
+            // Register the Swagger generator, defining 1 or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info
+                {
+                    Title = "Agente Comunitário de Saúde - Web API",
+                    Version = "v1",
+                    Description = "ASP.NET Core Web API para o monitoramento da saúde de pacientes",
+                    Contact = new Contact
+                    {
+                        Name = "Maria Cecília Pereira Rodrigues",
+                        Email = "cecilia.mariar2@gmail.com"
+                    }
+                });
+                var security = new Dictionary<string, IEnumerable<string>>
+                {
+                    {"Bearer", new string[] { }},
+                };
+
+                c.AddSecurityDefinition(
+                    "Bearer",
+                    new ApiKeyScheme
+                    {
+                        In = "header",
+                        Description = "Infore o token no seguinte padrão 'Bearer ' + token'",
+                        Name = "Authorization",
+                        Type = "apiKey"
+                    });
+
+                c.AddSecurityRequirement(security);
+            });
 
         }
 
 
+        //// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        //public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        //{
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        //    // Enable middleware to serve generated Swagger as a JSON endpoint.
+        //    //app.UseSwagger();
+
+        //    //app.UseSwaggerUi3(config => config.TransformToExternalPath = (internalUIRoute, request) =>
+
+        //    //{
+        //    //    if (internalUIRoute.StartsWith("/") && !internalUIRoute.StartsWith(request.PathBase))
+        //    //    {
+        //    //        return request.PathBase + internalUIRoute;
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        return internalUIRoute;
+        //    //    }
+        //    //});
+
+
+        //    if (env.IsDevelopment())
+        //    {
+        //        app.UseDeveloperExceptionPage();
+        //    }
+
+        //    app.UseAuthentication();
+
+        //    app.UseMvc();
+
+        //}
+
+        public void Configure(IApplicationBuilder app)
         {
-
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
-            app.UseSwaggerUi3(config => config.TransformToExternalPath = (internalUIRoute, request) =>
-
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
             {
-                if (internalUIRoute.StartsWith("/") && !internalUIRoute.StartsWith(request.PathBase))
-                {
-                    return request.PathBase + internalUIRoute;
-                }
-                else
-                {
-                    return internalUIRoute;
-                }
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = string.Empty;
             });
-
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseHsts();
-            }
-
-            app.UseHttpsRedirection();
             app.UseMvc();
-            app.UseAuthentication();
+            //app.UseRouting();
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllers();
+            //});
         }
+
     }
 }

@@ -42,14 +42,14 @@ namespace ACS.WebApi.Negocio
                     issuer: "ACS.tcc.com",
                     audience: "ACS.tcc.com",
                     claims: credencial,
-                     expires: DateTime.Now.AddHours(1),
-                     signingCredentials: signingCredentials);
+                    expires: DateTime.Now.AddDays(1),
+                    signingCredentials: signingCredentials);
 
-                return new JwtSecurityTokenHandler().WriteToken(token);
+                return string.Concat("Bearer ", new JwtSecurityTokenHandler().WriteToken( token));
 
             }else
             {
-                throw new UsuarioouSenhaInvalidoExcecao("Usuario ou senha inválidos");
+                throw new UsuarioouSenhaInvalidoExcecao();
             }
         }
 
