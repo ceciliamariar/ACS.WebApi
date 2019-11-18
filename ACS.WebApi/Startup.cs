@@ -39,38 +39,65 @@ namespace ACS.WebApi
             //Criptografia por injecao de dependencia, caso necessario apenas trocar a criptografia
             services.AddScoped<ICrypto, MD5Crypto>();
 
+            var SecaoConfiguracao = _Configuration.GetSection("Configuracoes");
+            services.Configure<Configuracoes>(SecaoConfiguracao);
+
+            var configuracao = SecaoConfiguracao.Get<Configuracoes>();
 
             //especifica o esquema usado para autenticacao do tipo Bearer
             // e 
             //define configurações como chave,algoritmo,validade, data expiracao...
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options =>
+            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //.AddJwtBearer(options =>
+            //{
+            //    options.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        ValidateIssuer = true,
+            //        ValidateAudience = true,
+            //        ValidateLifetime = true,
+            //        ValidateIssuerSigningKey = true,
+            //        ValidIssuer = "ACS.tcc.com",
+            //        ValidAudience = "ACS.tcc.com",
+            //        IssuerSigningKey = new SymmetricSecurityKey(
+            //            Encoding.UTF8.GetBytes(_Configuration["ChaveSecreta"]))
+            //    };
+            //    options.Events = new JwtBearerEvents()
+            //    {
+            //        OnTokenValidated = cotext =>
+            //        {
+            //            return Task.CompletedTask;
+            //        },
+            //        OnAuthenticationFailed = cotext =>
+            //        {
+            //            return Task.CompletedTask;
+            //        },
+            //    };
+
+            //});
+
+            services.AddAuthentication(a =>
             {
-                options.TokenValidationParameters = new TokenValidationParameters
+                a.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                a.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(b=>
+            {
+                b.RequireHttpsMetadata = true;
+                b.SaveToken = true;
+                b.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = "ACS.tcc.com",
-                    ValidAudience = "ACS.tcc.com",
+                    ValidIssuer = configuracao.Emissor ,
+                    ValidAudience = configuracao.ValidoEm,
                     IssuerSigningKey = new SymmetricSecurityKey(
-                        Encoding.UTF8.GetBytes(_Configuration["ChaveSecreta"]))
-                };
-                options.Events = new JwtBearerEvents()
-                {
-                    OnTokenValidated = cotext =>
-                    {
-                        return Task.CompletedTask;
-                    },
-                    OnAuthenticationFailed = cotext =>
-                    {
-                        return Task.CompletedTask;
-                    },
+                        Encoding.UTF8.GetBytes(configuracao.ChaveSecreta))
                 };
 
-            });
-       
+            }
+            );
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
@@ -152,6 +179,7 @@ namespace ACS.WebApi
             });
             app.UseMvc();
             //app.UseRouting();
+            app.UseAuthentication();
             //app.UseEndpoints(endpoints =>
             //{
             //    endpoints.MapControllers();

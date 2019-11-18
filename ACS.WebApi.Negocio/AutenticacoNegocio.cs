@@ -1,26 +1,30 @@
 ﻿using ACS.WebApi.Dominio.Entradas;
+using ACS.WebApi.Excecoes;
+using ACS.WebApi.Util;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using ACS.WebApi.Excecoes;
 
 namespace ACS.WebApi.Negocio
 {
-    public class AutenticacoNegocio  : IAutenticacaoNegocio
+    public class AutenticacoNegocio : IAutenticacaoNegocio
     {
         private readonly IUsuarioNegocio _usuarioNegocio;
-
-
-        private readonly IConfiguration _configuraracao;
+        private readonly Configuracoes _configuraracao;
         
-        public AutenticacoNegocio(IConfiguration configuraracao,
+
+        public AutenticacoNegocio(IOptions<Configuracoes> configuraracao,
                                     IUsuarioNegocio usuarioNegocio)
         {
             _usuarioNegocio = usuarioNegocio;
-            _configuraracao = configuraracao;
+            _configuraracao = configuraracao.Value;
 
         }
         public string SolicitarToken(LoginEntrada login)
@@ -33,27 +37,28 @@ namespace ACS.WebApi.Negocio
                     new Claim(ClaimTypes.Role, login.Perfil.ToString()),
                 };
 
-                var chave = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuraracao["ChaveSecreta"]));
+                var chave = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuraracao.ChaveSecreta));
 
 
                 var signingCredentials = new SigningCredentials(chave, SecurityAlgorithms.HmacSha256);
 
                 var token = new JwtSecurityToken(
-                    issuer: "ACS.tcc.com",
-                    audience: "ACS.tcc.com",
+                    issuer: _configuraracao.Emissor,
+                    audience: _configuraracao.ValidoEm,
                     claims: credencial,
-                    expires: DateTime.Now.AddDays(1),
+                    expires: DateTime.UtcNow.AddMinutes(_configuraracao.ValidadeMinutos),
                     signingCredentials: signingCredentials);
 
-                return string.Concat("Bearer ", new JwtSecurityTokenHandler().WriteToken( token));
+                return string.Concat("Bearer ", new JwtSecurityTokenHandler().WriteToken(token));
 
-            }else
+            }
+            else
             {
                 throw new UsuarioouSenhaInvalidoExcecao();
             }
         }
 
 
-        
+
     }
 }

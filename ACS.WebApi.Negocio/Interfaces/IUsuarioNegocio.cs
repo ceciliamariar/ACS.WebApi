@@ -14,5 +14,6 @@ namespace ACS.WebApi.Negocio
         void Insert(UsuarioEntrada obj);
 
         bool VerificaUsuario(LoginEntrada loginEntrada);
+        void Update(UsuarioEntrada obj);
     }
 }

@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ACS.WebApi.Dominio.Entidades;
-using ACS.WebApi.Dominio.Entradas;
+﻿using ACS.WebApi.Dominio.Entradas;
 using ACS.WebApi.Dominio.Saidas;
 using ACS.WebApi.Negocio;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ACS.WebApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController] 
-    //[Authorize()]
+    [ApiController]
+    [Authorize()]
     public class UsuariosController : ControllerBase
     {
         public IUsuarioNegocio UsuarioNegocio { get; set; }
@@ -24,13 +22,14 @@ namespace ACS.WebApi.Controllers
             UsuarioNegocio = _IUsuarioNegocio;
         }
         // GET api/values
+        
         [HttpGet]
-        [Route("/{login}")]
-        public ActionResult<IEnumerable<UsuarioSaida>> Get(string login)
+        [Route("{login}")]
+        public ActionResult<IList<UsuarioSaida>> Get(string login)
         {
             try
             {
-                return Ok(Task<IEnumerable<UsuarioSaida>>.Run(() => UsuarioNegocio.RetornaUsuarios(login)));
+                return Ok(Task<IList<UsuarioSaida>>.Run(() => UsuarioNegocio.RetornaUsuarios(login)));
 
             }
             catch (Exception)
@@ -41,14 +40,7 @@ namespace ACS.WebApi.Controllers
 
 
         }
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-
+        
         // POST api/values
         [HttpPost]
         public ActionResult Post([FromBody] UsuarioEntrada value)
@@ -68,8 +60,11 @@ namespace ACS.WebApi.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] UsuarioEntrada value)
         {
+            Task<IEnumerable<UsuarioSaida>>.Run(() => UsuarioNegocio.Update(value));
+
+            //return Ok();
         }
 
         // DELETE api/values/5

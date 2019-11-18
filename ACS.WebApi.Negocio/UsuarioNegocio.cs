@@ -55,6 +55,20 @@ namespace ACS.WebApi.Negocio
             base.Insert(usuario);
         }
 
+        public void Update(UsuarioEntrada obj)
+        {
+            var usu = this.Where(a => a.Login.Contains(obj.Login)).FirstOrDefault();
+
+
+            usu.Email = obj.Email;
+            usu.Nome = obj.Nome;
+            usu.Perfil = obj.Perfil;
+            usu.Senha = _criptografiaNegocio.Criptografa(obj.Senha);
+          
+            base.Update(usu);
+        }
+
+
         public bool VerificaUsuario(LoginEntrada loginEntrada)
         {
             var usu = _Repositorio.Where(u => u.Login == loginEntrada.Login 

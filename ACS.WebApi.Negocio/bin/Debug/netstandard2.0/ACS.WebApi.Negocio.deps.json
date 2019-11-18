@@ -14,7 +14,9 @@
           "ACS.WebApi.Excecoes": "1.0.0",
           "ACS.WebApi.Util": "1.0.0",
           "NETStandard.Library": "2.0.3",
-          "System.IdentityModel.Tokens.Jwt": "5.2.1"
+          "System.IdentityModel.Tokens.Jwt": "5.2.1",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.1.1.0",
+          "Microsoft.AspNetCore.Mvc.Core": "2.1.1.0"
         },
         "runtime": {
           "ACS.WebApi.Negocio.dll": {}
@@ -1380,6 +1382,22 @@
         "runtime": {
           "ACS.WebApi.Util.dll": {}
         }
+      },
+      "Microsoft.AspNetCore.Http.Abstractions/2.1.1.0": {
+        "runtime": {
+          "Microsoft.AspNetCore.Http.Abstractions.dll": {
+            "assemblyVersion": "2.1.1.0",
+            "fileVersion": "2.1.1.18157"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Mvc.Core/2.1.1.0": {
+        "runtime": {
+          "Microsoft.AspNetCore.Mvc.Core.dll": {
+            "assemblyVersion": "2.1.1.0",
+            "fileVersion": "2.1.1.18157"
+          }
+        }
       }
     }
   },
@@ -2211,6 +2229,16 @@
     },
     "ACS.WebApi.Util/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.AspNetCore.Http.Abstractions/2.1.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.AspNetCore.Mvc.Core/2.1.1.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

@@ -30,3 +30,7 @@ C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\bin\De
 C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\ACS.WebApi.Util.dll
 C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\ACS.WebApi.Excecoes.pdb
 C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\ACS.WebApi.Util.pdb
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Mvc.Core.dll
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.xml
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Negocio\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Mvc.Core.xml
