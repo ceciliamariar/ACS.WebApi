@@ -12,6 +12,9 @@ namespace ACS.WebApi.Dominio.Entidades
         public DateTime DataCriacao { get; set; }
         [Required]
         public DateTime DataUltimaAtulizacao { get; set; }
+        [Required]
+        [ForeignKey("FKUsuUltimaAtulizacao")]
+        public int IdUsuarioUltimaAtualicao { get; set; }
         public Usuario UsuarioUltimaAtualizacao { get; set; }
 
     }

@@ -25,11 +25,14 @@ namespace ACS.WebApi.Controllers
         
         [HttpGet]
         [Route("{login}")]
-        public ActionResult<IList<UsuarioSaida>> Get(string login)
+        public ActionResult<UsuarioSaida> Get(string login)
         {
             try
             {
-                return Ok(Task<IList<UsuarioSaida>>.Run(() => UsuarioNegocio.RetornaUsuarios(login)));
+
+                var retorno = Task<UsuarioSaida>.Run(() => UsuarioNegocio.RetornaUsuario(login));
+
+                return Ok(retorno);
 
             }
             catch (Exception)

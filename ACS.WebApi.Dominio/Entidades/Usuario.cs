@@ -21,9 +21,10 @@ namespace ACS.WebApi.Dominio.Entidades
         [Required]
         [StringLength(50)]
         public string Senha { get; set; }
-
         [Required]
         public PerfilUsuarioEnum Perfil { get; set; }
-
+        [Required]
+        public TipoPessoaEnum TipoPessoa { get; set; }
+        
     }
 }

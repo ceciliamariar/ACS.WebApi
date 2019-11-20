@@ -1,19 +1,16 @@
-﻿using ACS.WebApi.Dominio.Entidades;
-using ACS.WebApi.Dominio.Entradas;
+﻿using ACS.WebApi.Dominio.Entradas;
 using ACS.WebApi.Dominio.Saidas;
-using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ACS.WebApi.Negocio
 {
-    public interface IUsuarioNegocio : INegocio<Usuario> 
+    public interface IUsuarioNegocio
     {
-        Task<IEnumerable<UsuarioSaida>> RetornaUsuarios(string login);
-        
-        void Insert(UsuarioEntrada obj);
+        Task<UsuarioSaida> RetornaUsuario(string login);
 
-        bool VerificaUsuario(LoginEntrada loginEntrada);
-        void Update(UsuarioEntrada obj);
+        Task<UsuarioSaida> Insert(UsuarioEntrada obj);
+
+        Task<bool> VerificaUsuario(LoginEntrada loginEntrada);
+        Task Update(UsuarioEntrada obj);
     }
 }

@@ -46,7 +46,7 @@ namespace ACS.WebApi.BaseDados.Repositorios
             return BdEntidade.AsNoTracking().Where(where);
         }
         
-        public virtual IQueryable<TEntidade> Join(IQueryable<TEntidade> query, Expression<Func<TEntidade, IProperty>> tabela)
+        public virtual IQueryable<TEntidade> Join(IQueryable<TEntidade> query, Expression<Func<TEntidade, object>> tabela)
         {
             return query.Include(tabela).AsQueryable();
         }

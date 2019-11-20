@@ -20,5 +20,8 @@ namespace ACS.WebApi.Dominio.Saidas
         [Required]
         public PerfilUsuarioEnum Perfil { get; set; }
 
+        [Required]
+        public TipoPessoaEnum TipoPessoa { get; set; }
+
     }
 }

@@ -16,7 +16,7 @@ namespace ACS.WebApi.Dominio.Repositorios.Interfaces
         Task<int> CommitAsync();
         void Delete(int id);
         void Insert(TEntidade obj);
-        IQueryable<TEntidade> Join(IQueryable<TEntidade> query, Expression<Func<TEntidade, IProperty>> tabela);
+        IQueryable<TEntidade> Join(IQueryable<TEntidade> query, Expression<Func<TEntidade, object>> tabela);
         IQueryable<TEntidade> Select();
         Task<List<TEntidade>> SelectAsync();
         void Update(TEntidade obj);

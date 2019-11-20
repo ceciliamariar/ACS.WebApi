@@ -6,7 +6,10 @@ namespace ACS.WebApi.Dominio.Enumeradores
 {
     public enum PerfilUsuarioEnum
     {
-        Entrevistador = 1,
-        Gestor  = 2
+        Cordenador = 1,
+        Professor  = 2,
+        Academico = 3,
+        VigilantePA = 3,
+        
     }
 }

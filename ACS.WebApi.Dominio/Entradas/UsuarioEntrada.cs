@@ -13,12 +13,14 @@ namespace ACS.WebApi.Dominio.Entradas
         [StringLength(100)]
         public string Email { get; set; }
         [Required]
-        [StringLength(50)]
+        [StringLength(100)]
         public string Login { get; set; }
         [Required]
         public string Senha { get; set; }
         [Required]
         public PerfilUsuarioEnum Perfil { get; set; }
+        [Required]
+        public TipoPessoaEnum TipoPessoa { get; set; }
 
     }
 }
