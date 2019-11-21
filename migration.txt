@@ -1,0 +1,32 @@
+Add-Migration AppMigration -Project ACS.WebApi.BaseDados -Context Contexto
+
+
+System.ObjectDisposedException: 'Cannot access a disposed object. A common cause of this error is disposing a context that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling Dispose() on the context, or wrapping the context in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+ObjectDisposed_ObjectName_Name'
+
+
+
+Cannot access a disposed object. A common cause of this error is disposing a context that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling Dispose() on the context, or wrapping the context in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+ObjectDisposed_ObjectName_Name
+
+
+System.ObjectDisposedException: 'Cannot access a disposed object. A common cause of this error is disposing a context that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling Dispose() on the context, or wrapping the context in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+ObjectDisposed_ObjectName_Name'
+
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZ2VzdG9yIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiUHJvZmVzc29yIiwiZXhwIjoxNTc0MzgyMjI4LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0In0.dAceAtQNNkbgw4uYKlB0QnvnRxYE1BWgRw7bqdSZ1ik
+
+
+{
+  "id": 1,
+  "nome": "gestor",
+  "email": "gestor@gmail.com",
+  "login": "gestor",
+  "perfil": 2,
+  "tipoPessoa": 0
+}
+
+{
+  "login": "gestor",
+  "senha": "secreta",
+  "perfil": 2
+}

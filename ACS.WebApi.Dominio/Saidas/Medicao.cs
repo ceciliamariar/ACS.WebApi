@@ -34,9 +34,6 @@ namespace ACS.WebApi.Dominio.Saidas
 
         [StringLength(500)]
         public string Comentario { get; set; }
-
-        public Paciente Paciente { get; set; }
-
-
+        
     }
 }

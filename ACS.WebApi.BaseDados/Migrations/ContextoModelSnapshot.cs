@@ -45,6 +45,8 @@ namespace ACS.WebApi.BaseDados.Migrations
                     b.Property<string>("GeoLocalizacao")
                         .HasMaxLength(1000);
 
+                    b.Property<int>("IdUsuarioUltimaAtualicao");
+
                     b.Property<int>("Numero");
 
                     b.Property<int?>("UsuarioUltimaAtualizacaoId");
@@ -74,6 +76,8 @@ namespace ACS.WebApi.BaseDados.Migrations
                     b.Property<int>("FC");
 
                     b.Property<int>("IdPaciente");
+
+                    b.Property<int>("IdUsuarioUltimaAtualicao");
 
                     b.Property<int>("PAdist");
 
@@ -112,6 +116,10 @@ namespace ACS.WebApi.BaseDados.Migrations
 
                     b.Property<int>("IdEndereco");
 
+                    b.Property<int>("IdUsuario");
+
+                    b.Property<int>("IdUsuarioUltimaAtualicao");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(200);
@@ -124,11 +132,15 @@ namespace ACS.WebApi.BaseDados.Migrations
                     b.Property<string>("Telefone")
                         .HasMaxLength(14);
 
+                    b.Property<int>("UsuarioResponsavelId");
+
                     b.Property<int?>("UsuarioUltimaAtualizacaoId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("EnderecoId");
+
+                    b.HasIndex("UsuarioResponsavelId");
 
                     b.HasIndex("UsuarioUltimaAtualizacaoId");
 
@@ -148,6 +160,8 @@ namespace ACS.WebApi.BaseDados.Migrations
                     b.Property<DateTime>("DataUltimaAtulizacao");
 
                     b.Property<DateTime>("DataVisita");
+
+                    b.Property<int>("IdUsuarioUltimaAtualicao");
 
                     b.Property<int?>("PacienteId");
 
@@ -180,6 +194,8 @@ namespace ACS.WebApi.BaseDados.Migrations
                         .IsRequired()
                         .HasMaxLength(500);
 
+                    b.Property<int>("IdUsuarioUltimaAtualicao");
+
                     b.Property<int?>("UsuarioUltimaAtualizacaoId");
 
                     b.HasKey("Id");
@@ -203,6 +219,8 @@ namespace ACS.WebApi.BaseDados.Migrations
                         .IsRequired()
                         .HasMaxLength(500);
 
+                    b.Property<int>("IdUsuarioUltimaAtualicao");
+
                     b.Property<int?>("UsuarioUltimaAtualizacaoId");
 
                     b.HasKey("Id");
@@ -225,6 +243,8 @@ namespace ACS.WebApi.BaseDados.Migrations
                     b.Property<DateTime>("DataUltimaAtulizacao");
 
                     b.Property<DateTime>("DataVisita");
+
+                    b.Property<int>("IdUsuarioUltimaAtualicao");
 
                     b.Property<int?>("PacienteId");
 
@@ -259,6 +279,8 @@ namespace ACS.WebApi.BaseDados.Migrations
                         .IsRequired()
                         .HasMaxLength(100);
 
+                    b.Property<int>("IdUsuarioUltimaAtualicao");
+
                     b.Property<string>("Login")
                         .IsRequired()
                         .HasMaxLength(50);
@@ -272,6 +294,8 @@ namespace ACS.WebApi.BaseDados.Migrations
                     b.Property<string>("Senha")
                         .IsRequired()
                         .HasMaxLength(50);
+
+                    b.Property<int>("TipoPessoa");
 
                     b.Property<int?>("UsuarioUltimaAtualizacaoId");
 
@@ -308,6 +332,11 @@ namespace ACS.WebApi.BaseDados.Migrations
                     b.HasOne("ACS.WebApi.Dominio.Entidades.Endereco", "Endereco")
                         .WithMany("Pacientes")
                         .HasForeignKey("EnderecoId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("ACS.WebApi.Dominio.Entidades.Usuario", "UsuarioResponsavel")
+                        .WithMany()
+                        .HasForeignKey("UsuarioResponsavelId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("ACS.WebApi.Dominio.Entidades.Usuario", "UsuarioUltimaAtualizacao")

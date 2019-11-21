@@ -15,7 +15,5 @@ namespace ACS.WebApi.Dominio.Saidas
         [Required]
         public DateTime DataVisita { get; set; }
 
-        public Remedio Remedio { get; set; }
-        public Paciente Paciente { get; set; }
     }
 }

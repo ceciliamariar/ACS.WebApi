@@ -12,5 +12,7 @@ namespace ACS.WebApi.Negocio
 
         Task<bool> VerificaUsuario(LoginEntrada loginEntrada);
         Task Update(UsuarioEntrada obj);
+
+        Task<LoginEntrada> RetornaUsuarioLogado(string tokenEntrada);
     }
 }

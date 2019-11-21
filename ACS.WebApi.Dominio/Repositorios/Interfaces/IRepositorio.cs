@@ -21,6 +21,10 @@ namespace ACS.WebApi.Dominio.Repositorios.Interfaces
         Task<List<TEntidade>> SelectAsync();
         void Update(TEntidade obj);
         IQueryable<TEntidade> Where(Expression<Func<TEntidade, bool>> where);
+
+        IQueryable<TEntidade> Query(Expression<Func<TEntidade, bool>> where = null,
+            Func<IQueryable<TEntidade>, IOrderedQueryable<TEntidade>> orderby = null,
+                params Expression<Func<TEntidade, object>>[] joins);
     }
 
 }

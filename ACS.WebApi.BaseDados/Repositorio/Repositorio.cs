@@ -1,14 +1,11 @@
 ﻿using ACS.WebApi.Dominio.Entidades;
 using ACS.WebApi.Dominio.Repositorios.Interfaces;
-using ACS.WebApi.BaseDados;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 using System.Linq;
 using System.Linq.Expressions;
-using Microsoft.EntityFrameworkCore.Metadata;
+using System.Threading.Tasks;
 
 namespace ACS.WebApi.BaseDados.Repositorios
 {
@@ -45,7 +42,7 @@ namespace ACS.WebApi.BaseDados.Repositorios
         {
             return BdEntidade.AsNoTracking().Where(where);
         }
-        
+
         public virtual IQueryable<TEntidade> Join(IQueryable<TEntidade> query, Expression<Func<TEntidade, object>> tabela)
         {
             return query.Include(tabela).AsQueryable();
@@ -66,6 +63,28 @@ namespace ACS.WebApi.BaseDados.Repositorios
         {
             BdContexto.Dispose();
         }
+
+
+
+        public IQueryable<TEntidade> Query(Expression<Func<TEntidade, bool>> where = null,
+            Func<IQueryable<TEntidade>, IOrderedQueryable<TEntidade>> orderby = null,
+                params Expression<Func<TEntidade, object>>[] joins)
+        {
+
+            IQueryable<TEntidade> queryable = BdContexto.Set<TEntidade>();
+
+            if (where != null)
+                queryable = queryable.Where(where);
+
+            foreach (var item in joins)
+                queryable = queryable.Include(item);
+
+            if (orderby != null)
+                queryable = orderby(queryable);
+
+            return queryable;
+        }
+
     }
 
 }

@@ -22,7 +22,5 @@ namespace ACS.WebApi.Dominio.Entradas
         [Required]
         public DateTime DataVisita { get; set; }
 
-        public Pergunta Pergunta { get; set; }
-        public Paciente Paciente { get; set; }
     }
 }

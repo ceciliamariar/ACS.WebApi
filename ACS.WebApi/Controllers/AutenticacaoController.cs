@@ -30,11 +30,11 @@ namespace ACS.WebApi.Controllers
         // POST: api/Autenticacao
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult SolicitarToken([FromBody] LoginEntrada usuario)
+        public async System.Threading.Tasks.Task<IActionResult> SolicitarTokenAsync([FromBody] LoginEntrada usuario)
         {
             try
             {
-                var token = _autenticacao.SolicitarToken(usuario);
+                var token = await _autenticacao.SolicitarToken(usuario);
 
                 return Ok(new { token });
 

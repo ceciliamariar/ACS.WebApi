@@ -12,7 +12,7 @@ namespace ACS.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize()]
+    //[Authorize()]
     public class UsuariosController : ControllerBase
     {
         public IUsuarioNegocio UsuarioNegocio { get; set; }
@@ -25,12 +25,15 @@ namespace ACS.WebApi.Controllers
         
         [HttpGet]
         [Route("{login}")]
-        public ActionResult<UsuarioSaida> Get(string login)
+        public async Task<ActionResult<UsuarioSaida>> GetAsync(string login)
         {
             try
             {
 
-                var retorno = Task<UsuarioSaida>.Run(() => UsuarioNegocio.RetornaUsuario(login));
+                LoginEntrada usuLogado  = await Task.Run(() => UsuarioNegocio.RetornaUsuarioLogado(HttpContext.Request.Headers["Authorization"].ToString()));
+
+
+                var retorno = await Task<UsuarioSaida>.Run(() => UsuarioNegocio.RetornaUsuario(login));
 
                 return Ok(retorno);
 

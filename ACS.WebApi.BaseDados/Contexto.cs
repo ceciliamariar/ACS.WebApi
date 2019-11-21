@@ -1,16 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ACS.WebApi.Dominio.Entidades;
-using System;
+﻿using ACS.WebApi.Dominio.Entidades;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace ACS.WebApi.BaseDados
 {
-    public class Contexto : DbContext  
+    public class Contexto : DbContext
     {
-        public DbSet<Endereco> Enderecos  { get; set; }
-        public DbSet<Medicao> Medicoes  { get; set; }
-        public DbSet<Paciente> Pacientes  { get; set; }
-        public DbSet<PacienteRemedio> PacientesRemedios  { get; set; }
+        public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<Medicao> Medicoes { get; set; }
+        public DbSet<Paciente> Pacientes { get; set; }
+        public DbSet<PacienteRemedio> PacientesRemedios { get; set; }
         public DbSet<Pergunta> Perguntas { get; set; }
         public DbSet<Remedio> Remedios { get; set; }
         public DbSet<Resposta> Respostas { get; set; }
@@ -28,11 +27,13 @@ namespace ACS.WebApi.BaseDados
             }
 
             //Chaves Compostas
-            modelbuilder.Entity<PacienteRemedio>().HasKey(t => new {
+            modelbuilder.Entity<PacienteRemedio>().HasKey(t => new
+            {
                 t.IdPaciente,
                 t.IdRemedio
             });
-            modelbuilder.Entity<Resposta>().HasKey(t => new {
+            modelbuilder.Entity<Resposta>().HasKey(t => new
+            {
                 t.IdPaciente,
                 t.IdPergunta
             });
