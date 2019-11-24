@@ -29,7 +29,7 @@ namespace ACS.WebApi.Negocio
                 () =>
                 {
                     UsuarioSaida saida = null;
-                    var usu = _Repositorio.Where(a => a.Login.ToUpper().Trim() == login.ToUpper().Trim()).FirstOrDefault(); ;
+                    var usu = _Repositorio.Query(where: a => a.Login.ToUpper().Trim() == login.ToUpper().Trim()).FirstOrDefault();
 
                     if (usu != null)
                         saida = new UsuarioSaida()
@@ -46,22 +46,20 @@ namespace ACS.WebApi.Negocio
         }
         public async Task<UsuarioSaida> Insert(UsuarioEntrada obj)
         {
-            return await Task<UsuarioSaida>.Run(
-           async () =>
+            return await Task<UsuarioSaida>.Run( () =>
            {
 
                string login = string.Concat(obj.Nome[0], ".");
 
                var arrayNome = obj.Nome.Split(' ');
                login += arrayNome[arrayNome.Length - 1];
-               bool existeLogin = await Task.Run(() => VerificaExistenciaLogin(login));
+               bool existeLogin = this.VerificaExistenciaLogin(login);
 
                if (existeLogin)
                {
-                   login += (await Task.Run(() =>  RecuperaMaxId()) + 1).ToString();
+                   login += (this.RecuperaMaxId() + 1).ToString();
                }
-
-
+               
                Usuario usuario = new Usuario()
                {
                    Email = obj.Email,
@@ -94,7 +92,7 @@ namespace ACS.WebApi.Negocio
             await Task.Run(() =>
             {
 
-                var usu = _Repositorio.Where(a => a.Login.ToUpper() == obj.Login.ToUpper()).FirstOrDefault();
+                var usu = _Repositorio.Query(where: a => a.Login.ToUpper() == obj.Login.ToUpper()).FirstOrDefault();
 
                 usu.Email = obj.Email;
                 usu.Nome = obj.Nome;
@@ -111,8 +109,8 @@ namespace ACS.WebApi.Negocio
         {
             return await Task<bool>.Run(() =>
             {
-                var usu = _Repositorio.Where(u => u.Login == loginEntrada.Login
-                                                && loginEntrada.Perfil == u.Perfil
+                var usu = _Repositorio.Query(where: u => u.Login == loginEntrada.Login
+                                                 && loginEntrada.Perfil == u.Perfil
                                             ).FirstOrDefault();
                 if (usu != null)
                 {
@@ -130,25 +128,19 @@ namespace ACS.WebApi.Negocio
         /// </summary>
         /// <param name="login"></param>
         /// <returns></returns>
-        private async Task<bool> VerificaExistenciaLogin(string login)
+        private bool VerificaExistenciaLogin(string login)
         {
-            return await Task.Run(() =>
-            {
-                var usu = _Repositorio.Where(a => a.Login.ToUpper() == login.ToUpper()).Count();
+            var usu = _Repositorio.Query(where: a => a.Login.ToUpper() == login.ToUpper()).Count();
 
-                return usu != 0;
-            });
+            return usu != 0;
+
         }
 
-        private async Task<long> RecuperaMaxId()
+        private long RecuperaMaxId()
         {
-            return await Task.Run(() =>
-           {
+            var max = _Repositorio.Query().Max(a => a.Id);
 
-               var max = _Repositorio.Select().Max(a => a.Id);
-
-               return max;
-           });
+            return max;
         }
 
 
@@ -160,11 +152,17 @@ namespace ACS.WebApi.Negocio
                LoginEntrada login = new LoginEntrada();
 
                JwtSecurityToken token = new JwtSecurityToken(jwtEncodedString: tokenEntrada.Replace("Bearer ", string.Empty));
+               if (token.Claims.First(c => c.Type == ClaimTypes.Name) != null)
+               {
+                   login.Login = token.Claims.First(c => c.Type == ClaimTypes.Name).Value;
+               }
+               if (token.Claims.First(c => c.Type == ClaimTypes.Role) != null)
+               {
+                   PerfilUsuarioEnum perfil;
+                   Enum.TryParse<PerfilUsuarioEnum>(token.Claims.First(c => c.Type == ClaimTypes.Role).Value, out perfil);
+                   login.Perfil = perfil;
 
-               login.Login = token.Claims.First(c => c.Type == ClaimTypes.Name).Value;
-               PerfilUsuarioEnum perfil;
-               Enum.TryParse<PerfilUsuarioEnum>(token.Claims.First(c => c.Type == ClaimTypes.Role).Value, out perfil);
-               login.Perfil = perfil;
+               }
                return new LoginEntrada();
 
            });

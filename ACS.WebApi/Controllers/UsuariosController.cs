@@ -12,7 +12,7 @@ namespace ACS.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize()]
+    [Authorize()]
     public class UsuariosController : ControllerBase
     {
         public IUsuarioNegocio UsuarioNegocio { get; set; }
@@ -30,7 +30,7 @@ namespace ACS.WebApi.Controllers
             try
             {
 
-                LoginEntrada usuLogado  = await Task.Run(() => UsuarioNegocio.RetornaUsuarioLogado(HttpContext.Request.Headers["Authorization"].ToString()));
+             //   LoginEntrada usuLogado  = await Task.Run(() => UsuarioNegocio.RetornaUsuarioLogado(HttpContext.Request.Headers["Authorization"].ToString()));
 
 
                 var retorno = await Task<UsuarioSaida>.Run(() => UsuarioNegocio.RetornaUsuario(login));
@@ -43,17 +43,33 @@ namespace ACS.WebApi.Controllers
 
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
-
-
         }
         
         // POST api/values
         [HttpPost]
-        public ActionResult Post([FromBody] UsuarioEntrada value)
+        public async Task<ActionResult<UsuarioSaida>> Post([FromBody] UsuarioEntrada value)
         {
             try
             {
-                Task<IEnumerable<UsuarioSaida>>.Run(() => UsuarioNegocio.Insert(value));
+                var retorno = await Task<IEnumerable<UsuarioSaida>>.Run(() => UsuarioNegocio.Insert(value));
+
+                return Ok(retorno);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+
+        // POST api/values
+        [HttpPut]
+        public ActionResult Put([FromBody] UsuarioEntrada value)
+        {
+            try
+            {
+                Task.Run(() => UsuarioNegocio.Update(value));
 
                 return Ok();
             }
@@ -64,19 +80,10 @@ namespace ACS.WebApi.Controllers
             }
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] UsuarioEntrada value)
-        {
-            Task<IEnumerable<UsuarioSaida>>.Run(() => UsuarioNegocio.Update(value));
 
-            //return Ok();
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+//GET -> SELECT
+//DELETE -> DELETE
+//POST -> INSERT
+//PUT -> UPDATE
     }
 }

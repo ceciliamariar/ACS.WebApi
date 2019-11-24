@@ -58,7 +58,11 @@ namespace ACS.WebApi.Negocio
                     throw new Exception("informe mais letras");
                 }
 
-                var pacientes = _Repositorio.Join(_Repositorio.Join(_Repositorio.Where(a => a.Nome.ToUpper().Contains(nome.ToUpper())), a=>a.Endereco), a=>a.UsuarioResponsavel).ToList();
+                var pacientes = _Repositorio.Query(a => a.Nome.ToUpper().Contains(nome.ToUpper()),
+                     null,
+                    a => a.Endereco,
+                    b => b.UsuarioResponsavel).ToList();
+                    
                 
                 if (pacientes != null)
                 {
@@ -81,6 +85,10 @@ namespace ACS.WebApi.Negocio
             });
 
         }
-        
+
+        public Task Update(PacienteEntrada obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

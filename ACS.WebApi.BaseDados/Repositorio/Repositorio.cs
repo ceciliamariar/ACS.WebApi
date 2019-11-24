@@ -30,23 +30,12 @@ namespace ACS.WebApi.BaseDados.Repositorios
 
             BdEntidade.Update(obj);
         }
-        public IQueryable<TEntidade> Select()
-        {
-            return BdEntidade.AsNoTracking().AsQueryable();
-        }
+      
         public async Task<List<TEntidade>> SelectAsync()
         {
             return await BdEntidade.ToListAsync();
         }
-        public IQueryable<TEntidade> Where(Expression<Func<TEntidade, bool>> where)
-        {
-            return BdEntidade.AsNoTracking().Where(where);
-        }
-
-        public virtual IQueryable<TEntidade> Join(IQueryable<TEntidade> query, Expression<Func<TEntidade, object>> tabela)
-        {
-            return query.Include(tabela).AsQueryable();
-        }
+        
         public void Delete(int id)
         {
             BdEntidade.Remove(BdEntidade.Find(id));

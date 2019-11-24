@@ -18,6 +18,11 @@ namespace ACS.WebApi.BaseDados
 
         public Contexto(DbContextOptions<Contexto> options) : base(options) { }
 
+        public override void Dispose()
+        {
+            base.Dispose();
+        }
+
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
             foreach (var relationship in modelbuilder.Model.GetEntityTypes()

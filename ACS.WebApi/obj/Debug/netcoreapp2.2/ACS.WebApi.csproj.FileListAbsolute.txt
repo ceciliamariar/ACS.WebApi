@@ -1,0 +1,15 @@
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.BaseDados\bin\Debug\netcoreapp2.2\ACS.WebApi.deps.json
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.BaseDados\bin\Debug\netcoreapp2.2\ACS.WebApi.runtimeconfig.json
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.BaseDados\bin\Debug\netcoreapp2.2\ACS.WebApi.runtimeconfig.dev.json
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.BaseDados\bin\Debug\netcoreapp2.2\ACS.WebApi.dll
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.BaseDados\bin\Debug\netcoreapp2.2\ACS.WebApi.pdb
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi\obj\Debug\netcoreapp2.2\ACS.WebApi.csprojAssemblyReference.cache
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi\obj\Debug\netcoreapp2.2\ACS.WebApi.csproj.CoreCompileInputs.cache
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi\obj\Debug\netcoreapp2.2\ACS.WebApi.RazorAssemblyInfo.cache
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi\obj\Debug\netcoreapp2.2\ACS.WebApi.RazorAssemblyInfo.cs
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi\obj\Debug\netcoreapp2.2\ACS.WebApi.AssemblyInfoInputs.cache
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi\obj\Debug\netcoreapp2.2\ACS.WebApi.AssemblyInfo.cs
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi\obj\Debug\netcoreapp2.2\ACS.WebApi.RazorTargetAssemblyInfo.cache
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi\obj\Debug\netcoreapp2.2\ACS.WebApi.csproj.CopyComplete
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi\obj\Debug\netcoreapp2.2\ACS.WebApi.dll
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi\obj\Debug\netcoreapp2.2\ACS.WebApi.pdb
