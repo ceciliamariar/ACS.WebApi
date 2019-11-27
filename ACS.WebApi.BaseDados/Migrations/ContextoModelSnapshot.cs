@@ -15,7 +15,7 @@ namespace ACS.WebApi.BaseDados.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085")
+                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -90,6 +90,8 @@ namespace ACS.WebApi.BaseDados.Migrations
                     b.Property<bool>("Rotina");
 
                     b.Property<int?>("UsuarioUltimaAtualizacaoId");
+
+                    b.Property<bool>("Validado");
 
                     b.HasKey("Id");
 
@@ -253,6 +255,8 @@ namespace ACS.WebApi.BaseDados.Migrations
                     b.Property<bool>("Respost");
 
                     b.Property<int?>("UsuarioUltimaAtualizacaoId");
+
+                    b.Property<bool>("Validado");
 
                     b.HasKey("IdPaciente", "IdPergunta");
 

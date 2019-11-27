@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ACS.WebApi.Dominio.Repositorios.Interfaces
 {
     
-    public interface IRepositorio<TEntidade> : IDisposable where TEntidade : EntidadeBase
+    public interface IRepositorio<TEntidade>  where TEntidade : EntidadeBase
     {
         int Commit();
         Task<int> CommitAsync();
@@ -22,6 +22,9 @@ namespace ACS.WebApi.Dominio.Repositorios.Interfaces
         IQueryable<TEntidade> Query(Expression<Func<TEntidade, bool>> where = null,
             Func<IQueryable<TEntidade>, IOrderedQueryable<TEntidade>> orderby = null,
                 params Expression<Func<TEntidade, object>>[] joins);
+
+
+        TEntidade SelectId(params object[] iDs);
     }
 
 }

@@ -39,4 +39,3 @@ C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Dominio\obj\De
 C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Dominio\obj\Debug\netstandard2.0\ACS.WebApi.Dominio.AssemblyInfo.cs
 C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Dominio\obj\Debug\netstandard2.0\ACS.WebApi.Dominio.dll
 C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Dominio\obj\Debug\netstandard2.0\ACS.WebApi.Dominio.pdb
-C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.Dominio\obj\Debug\netstandard2.0\ACS.WebApi.Dominio.csprojAssemblyReference.cache

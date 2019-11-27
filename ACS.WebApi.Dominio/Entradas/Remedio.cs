@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ACS.WebApi.Dominio.Entradas
 {
-    public class Remedio 
+    public class RemedioEntrada
     {
         [Key]
         public int Id { get; set; }
@@ -14,7 +14,6 @@ namespace ACS.WebApi.Dominio.Entradas
         [Required]
         [StringLength(500)]
         public string Descricao { get; set; }
-
-        public List<PacienteRemedio> PacientesRemedio { get; set; }
+        
     }
 }

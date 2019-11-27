@@ -21,12 +21,11 @@ namespace ACS.WebApi.Dominio.Saidas
 
         [Required]
         public int IdEndereco { get; set; }
-
+        
         [Required]
-        public string DescricaoEndereco { get; set; }
-
+        public string NomeResponsavel { get; set; }
         [Required]
-        public string Responsavel { get; set; }
+        public int idResponsavel { get; set; }
 
     }
 

@@ -3,6 +3,7 @@ using ACS.WebApi.Dominio.Entradas;
 using ACS.WebApi.Dominio.Enumeradores;
 using ACS.WebApi.Dominio.Repositorios.Interfaces;
 using ACS.WebApi.Dominio.Saidas;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -16,10 +17,13 @@ namespace ACS.WebApi.Negocio
     {
 
         private readonly ICriptografiaNegocio _criptografiaNegocio;
+        private readonly IMapper _mapper;
         public UsuarioNegocio(IUsuarioRepositorio repositorio,
-                               ICriptografiaNegocio criptografiaNegocio) : base(repositorio)
+                               ICriptografiaNegocio criptografiaNegocio,
+                               IMapper mapper) : base(repositorio)
         {
             _criptografiaNegocio = criptografiaNegocio;
+            _mapper = mapper;
         }
 
         #region PUBLIC
@@ -32,15 +36,8 @@ namespace ACS.WebApi.Negocio
                     var usu = _Repositorio.Query(where: a => a.Login.ToUpper().Trim() == login.ToUpper().Trim()).FirstOrDefault();
 
                     if (usu != null)
-                        saida = new UsuarioSaida()
-                        {
-                            Email = usu.Email,
-                            Id = usu.Id,
-                            Login = usu.Login,
-                            Nome = usu.Nome,
-                            Perfil = usu.Perfil
-                        };
-
+                        saida = _mapper.Map<UsuarioSaida>(usu);
+                   
                     return saida;
                 });
         }

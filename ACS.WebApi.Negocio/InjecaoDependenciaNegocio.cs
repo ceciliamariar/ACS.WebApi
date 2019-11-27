@@ -12,11 +12,11 @@ namespace ACS.WebApi.Negocio
             services.AddScoped<IUsuarioNegocio, UsuarioNegocio>();
             services.AddScoped<IAutenticacaoNegocio, AutenticacoNegocio>();
             services.AddScoped<ICriptografiaNegocio, CriptografiaNegocio>();
-            //services.AddScoped<IEnderecoNegocio, EnderecoNegocio>();
-            //services.AddScoped<IMedicaoNegocio, MedicaoNegocio>();
+            services.AddScoped<IEnderecoNegocio, EnderecoNegocio>();
+            services.AddScoped<IMedicaoNegocio, MedicaoNegocio>();
             //services.AddScoped<IPacienteRemedioNegocio, PacienteRemedioNegocio>();
             services.AddScoped<IPacienteNegocio, PacienteNegocio>();
-            //services.AddScoped<IPerguntaNegocio, PerguntaNegocio>();
+            services.AddScoped<IPerguntaNegocio, PerguntaNegocio>();
             //services.AddScoped<IRemedioNegocio, RemedioNegocio>();
             //services.AddScoped<IRespostaNegocio, RespostaNegocio>();
             //services.AddScoped<IUsuarioNegocio, UsuarioNegocio>();

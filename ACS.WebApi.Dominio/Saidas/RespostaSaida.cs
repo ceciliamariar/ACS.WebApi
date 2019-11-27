@@ -6,17 +6,14 @@ using System.Text;
 
 namespace ACS.WebApi.Dominio.Saidas
 {
-    public class Resposta 
+    public class RespostaSaida
     {
-
-        [Key]
         public int IdPaciente { get; set; }
 
-        [Key]
-        public int IdPergunta { get; set; }
+        public PerguntaSaida Pergunta { get; set; }
 
         [Required]
-        public bool Respost { get; set; }
+        public bool Resposta { get; set; }
         [Required]
         public DateTime DataInicio { get; set; }
         [Required]

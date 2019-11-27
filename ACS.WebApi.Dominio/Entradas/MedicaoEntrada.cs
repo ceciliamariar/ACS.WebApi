@@ -8,6 +8,8 @@ namespace ACS.WebApi.Dominio.Entradas
 {
     public class MedicaoEntrada
     {
+        public int? Id { get; set; }
+
         [Required]
         public int IdPaciente { get; set; }
 
@@ -32,9 +34,7 @@ namespace ACS.WebApi.Dominio.Entradas
         [StringLength(500)]
         public string Comentario { get; set; }
         
-        [Required]
-        public long idPaciente { get; set; }
-
+        
 
     }
 }

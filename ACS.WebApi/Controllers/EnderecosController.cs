@@ -12,22 +12,21 @@ namespace ACS.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PacienteController : ControllerBase
+    public class EnderecosController : ControllerBase
     {
-        public IPacienteNegocio PacienteNegocio { get; set; }
+        public IEnderecoNegocio EnderecoNegocio { get; set; }
 
-        public PacienteController(IPacienteNegocio _IPacienteNegocio)
+        public EnderecosController(IEnderecoNegocio _IEnderecoNegocio)
         {
-            PacienteNegocio = _IPacienteNegocio;
+            EnderecoNegocio = _IEnderecoNegocio;
         }
-        
-        // POST api/values
+
         [HttpPost]
-        public async Task<ActionResult<PacienteSaida>> Post([FromBody] PacienteEntrada value)
+        public async Task<ActionResult<EnderecoSaida>> Post([FromBody] EnderecoEntrada value)
         {
             try
             {
-                var retorno = await Task<IEnumerable<PacienteSaida>>.Run(() => PacienteNegocio.Insert(value));
+                var retorno = await Task<IEnumerable<EnderecoSaida>>.Run(() => EnderecoNegocio.Insert(value));
 
                 return Ok(retorno);
             }
@@ -37,15 +36,13 @@ namespace ACS.WebApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
-
-
-        // POST api/values
+        
         [HttpPut]
-        public ActionResult Put([FromBody] PacienteEntrada value)
+        public ActionResult Put([FromBody] EnderecoEntrada value)
         {
             try
             {
-                Task.Run(() => PacienteNegocio.Update(value));
+                Task.Run(() => EnderecoNegocio.Update(value));
 
                 return Ok();
             }

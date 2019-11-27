@@ -26,6 +26,10 @@ namespace ACS.WebApi.Dominio.Entidades
         [StringLength(500)]
         public string Comentario { get; set; }
 
+        [Required]
+        public bool Validado { get; set; }
+
+
         [ForeignKey("FKPacienteMedicao")]
         [Required]
         public int IdPaciente { get; set; }

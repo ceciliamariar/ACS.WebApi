@@ -1,7 +1,6 @@
 ﻿using ACS.WebApi.Dominio.Entradas;
 using ACS.WebApi.Dominio.Saidas;
 using ACS.WebApi.Negocio;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,7 +11,6 @@ namespace ACS.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize()]
     public class UsuariosController : ControllerBase
     {
         public IUsuarioNegocio UsuarioNegocio { get; set; }
@@ -22,7 +20,7 @@ namespace ACS.WebApi.Controllers
             UsuarioNegocio = _IUsuarioNegocio;
         }
         // GET api/values
-        
+
         [HttpGet]
         [Route("{login}")]
         public async Task<ActionResult<UsuarioSaida>> GetAsync(string login)
@@ -30,7 +28,7 @@ namespace ACS.WebApi.Controllers
             try
             {
 
-             //   LoginEntrada usuLogado  = await Task.Run(() => UsuarioNegocio.RetornaUsuarioLogado(HttpContext.Request.Headers["Authorization"].ToString()));
+                //   LoginEntrada usuLogado  = await Task.Run(() => UsuarioNegocio.RetornaUsuarioLogado(HttpContext.Request.Headers["Authorization"].ToString()));
 
 
                 var retorno = await Task<UsuarioSaida>.Run(() => UsuarioNegocio.RetornaUsuario(login));
@@ -44,7 +42,7 @@ namespace ACS.WebApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
-        
+
         // POST api/values
         [HttpPost]
         public async Task<ActionResult<UsuarioSaida>> Post([FromBody] UsuarioEntrada value)
@@ -65,11 +63,11 @@ namespace ACS.WebApi.Controllers
 
         // POST api/values
         [HttpPut]
-        public ActionResult Put([FromBody] UsuarioEntrada value)
+        public async Task<ActionResult> Put([FromBody] UsuarioEntrada value)
         {
             try
             {
-                Task.Run(() => UsuarioNegocio.Update(value));
+                await UsuarioNegocio.Update(value);
 
                 return Ok();
             }
@@ -81,9 +79,9 @@ namespace ACS.WebApi.Controllers
         }
 
 
-//GET -> SELECT
-//DELETE -> DELETE
-//POST -> INSERT
-//PUT -> UPDATE
+        //GET -> SELECT
+        //DELETE -> DELETE
+        //POST -> INSERT
+        //PUT -> UPDATE
     }
 }

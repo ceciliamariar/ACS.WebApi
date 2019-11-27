@@ -27,7 +27,6 @@ namespace ACS.WebApi.BaseDados.Repositorios
         public void Update(TEntidade obj)
         {
             obj.DataUltimaAtulizacao = DateTime.Now;
-
             BdEntidade.Update(obj);
         }
       
@@ -48,12 +47,7 @@ namespace ACS.WebApi.BaseDados.Repositorios
         {
             return BdContexto.SaveChanges();
         }
-        public void Dispose()
-        {
-            BdContexto.Dispose();
-        }
-
-
+      
 
         public IQueryable<TEntidade> Query(Expression<Func<TEntidade, bool>> where = null,
             Func<IQueryable<TEntidade>, IOrderedQueryable<TEntidade>> orderby = null,
@@ -74,6 +68,11 @@ namespace ACS.WebApi.BaseDados.Repositorios
             return queryable;
         }
 
+        public TEntidade SelectId(params object[] iDs)
+        {
+            return BdContexto.Set<TEntidade>().Find(iDs);
+        }
+       
     }
 
 }

@@ -1,6 +1,7 @@
 ﻿using ACS.WebApi.BaseDados;
 using ACS.WebApi.Negocio;
 using ACS.WebApi.Util;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -128,6 +129,8 @@ namespace ACS.WebApi
 
                 c.AddSecurityRequirement(security);
             });
+
+            services.AddAutoMapper( typeof(MapperEntrada), typeof(MapperSaida));
 
         }
         

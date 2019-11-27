@@ -6,9 +6,8 @@ using System.Text;
 
 namespace ACS.WebApi.Dominio.Saidas
 {
-    public class Medicao
+    public class MedicaoSaida
     {
-        [Key]
         public int Id { get; set; }
 
         [Required]

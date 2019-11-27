@@ -33,11 +33,11 @@ namespace ACS.WebApi.Negocio
                 var usuarioValido = await _usuarioNegocio.VerificaUsuario(login);
                 if (usuarioValido)
                 {
-                    //var credencial = new[]
-                    //{
-                    //        new Claim(ClaimTypes.Name, login.Login),
-                    //        new Claim(ClaimTypes.Role, login.Perfil.ToString()),
-                    //};
+                    var credencial = new[]
+                    {
+                            new Claim(ClaimTypes.Name, login.Login),
+                            new Claim(ClaimTypes.Role, login.Perfil.ToString()),
+                    };
 
                     var chave = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuraracao.ChaveSecreta));
 
@@ -47,7 +47,7 @@ namespace ACS.WebApi.Negocio
                     var token = new JwtSecurityToken(
                         issuer: _configuraracao.Emissor,
                         audience: _configuraracao.ValidoEm,
-                        //claims: credencial,
+                        claims: credencial,
                         expires: DateTime.UtcNow.AddMinutes(_configuraracao.ValidadeMinutos),
                         signingCredentials: signingCredentials);
 

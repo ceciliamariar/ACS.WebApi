@@ -4,6 +4,8 @@ namespace ACS.WebApi.Dominio.Entradas
 {
     public class EnderecoEntrada
     {
+        public int Id { get; set; }
+
         [StringLength(200)]
         public string Descricao { get; set; }
 

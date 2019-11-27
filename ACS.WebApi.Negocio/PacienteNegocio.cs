@@ -2,6 +2,7 @@
 using ACS.WebApi.Dominio.Entradas;
 using ACS.WebApi.Dominio.Repositorios.Interfaces;
 using ACS.WebApi.Dominio.Saidas;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,12 @@ namespace ACS.WebApi.Negocio
 {
     public class PacienteNegocio : Negocio<Paciente>, IPacienteNegocio
     {
-        public PacienteNegocio(IPacienteRepositorio pacienteRepositorio) : base(pacienteRepositorio)
-        {
+        private readonly IMapper _mapper;
 
+        public PacienteNegocio(IPacienteRepositorio pacienteRepositorio,
+                               IMapper mapper) : base(pacienteRepositorio)
+        {
+            _mapper = mapper;
         }
 
         public async Task<PacienteSaida> Insert(PacienteEntrada obj)
@@ -21,7 +25,7 @@ namespace ACS.WebApi.Negocio
             return await Task<PacienteSaida>.Run(() =>
             {
 
-                Paciente usuario = new Paciente()
+                Paciente paciente = new Paciente()
                 {
                     Nome = obj.Nome,
                     Sexo = obj.Sexo,
@@ -32,16 +36,17 @@ namespace ACS.WebApi.Negocio
                     DataNascimento = obj.DataNascimento
                 };
 
-                _Repositorio.Insert(usuario);
+                _Repositorio.Insert(paciente);
                 _Repositorio.Commit();
 
                 return new PacienteSaida()
                 {
-                    Nome = usuario.Nome,
-                    Sexo = usuario.Sexo,
-                    IdEndereco = usuario.IdEndereco,
-                    Telefone = usuario.Telefone,
-                    DataNascimento = usuario.DataNascimento
+                    Id = paciente.Id,
+                    Nome = paciente.Nome,
+                    Sexo = paciente.Sexo,
+                    IdEndereco = paciente.IdEndereco,
+                    Telefone = paciente.Telefone,
+                    DataNascimento = paciente.DataNascimento
                 };
             });
 
@@ -60,7 +65,6 @@ namespace ACS.WebApi.Negocio
 
                 var pacientes = _Repositorio.Query(a => a.Nome.ToUpper().Contains(nome.ToUpper()),
                      null,
-                    a => a.Endereco,
                     b => b.UsuarioResponsavel).ToList();
                     
                 
@@ -71,24 +75,86 @@ namespace ACS.WebApi.Negocio
                     pacientes.ForEach(a => saida.Add(new PacienteSaida()
                     {
                         DataNascimento = a.DataNascimento,
-                        DescricaoEndereco = string.Concat(a.Endereco.Descricao, ", Nº", a.Endereco.Numero, " - ", a.Endereco.Bairro, " - ", a.Endereco.Cidade, " - CEP" , a.Endereco.CEP ),
                         IdEndereco = a.IdEndereco,
                         Id = a.Id,
                         Nome = a.Nome,
                         Sexo = a.Sexo,
                         Telefone = a.Telefone,
-                        Responsavel = a.UsuarioResponsavel.Nome
-
+                        NomeResponsavel = a.UsuarioResponsavel.Nome,
+                        idResponsavel =a.UsuarioResponsavel.Id
                     }));
+
+                    saida = _mapper.Map<List<PacienteSaida>>(pacientes);
                 }
                 return saida;
             });
 
         }
 
-        public Task Update(PacienteEntrada obj)
+        public async Task<PacienteDetalheSaida> RecuperaPaciente(int idPaciente)
         {
-            throw new NotImplementedException();
+            return await Task<PacienteDetalheSaida>.Run(() => {
+
+                PacienteDetalheSaida saida = null;
+
+                var paciente = _Repositorio.Query(A => A.Id == idPaciente,
+                 null,
+                b => b.UsuarioResponsavel,
+                c => c.Respostas,
+                d => d.Endereco,
+                e => e.PacienteRemedios).FirstOrDefault();
+
+
+                if (paciente != null)
+                {
+
+                    saida = new PacienteDetalheSaida()
+                    {
+                        DataNascimento = paciente.DataNascimento,
+                        Endereco = new EnderecoSaida()
+                        {
+                            Id = paciente.IdEndereco,
+                            Bairro = paciente.Endereco.Bairro,
+                            CEP = paciente.Endereco.CEP,
+                            Cidade = paciente.Endereco.Cidade,
+                            Descricao = paciente.Endereco.Cidade,
+                            GeoLocalizacao = paciente.Endereco.GeoLocalizacao,
+                            Numero = paciente.Endereco.Numero
+                        },
+                        Respostas = new List<RespostaSaida>(),
+                        Id = paciente.Id,
+                        Nome = paciente.Nome,
+                        Sexo = paciente.Sexo,
+                        Telefone = paciente.Telefone,
+                        Responsavel = new UsuarioSaida()
+                        {
+                            Nome = paciente.UsuarioResponsavel.Nome,
+                            Id = paciente.UsuarioResponsavel.Id,
+                            Perfil = paciente.UsuarioResponsavel.Perfil,
+                            TipoPessoa = paciente.UsuarioResponsavel.TipoPessoa,
+                        }
+                    };
+                }
+                return saida;
+            });
+
+        }
+
+        public async Task Update(PacienteEntrada obj)
+        {
+            await Task.Run(() =>
+            {
+                var paciente = _Repositorio.Query(where: a => a.Id == obj.IdEndereco).FirstOrDefault();
+
+                paciente.IdEndereco = obj.IdEndereco;
+                paciente.Nome = obj.Nome;
+                paciente.Sexo = obj.Sexo;
+                paciente.DataNascimento = obj.DataNascimento;
+                paciente.Telefone = obj.Telefone;
+
+                _Repositorio.Update(paciente);
+                _Repositorio.Commit();
+            });
         }
     }
 }

@@ -24,6 +24,9 @@ namespace ACS.WebApi.Dominio.Entidades
         [Required]
         public DateTime DataVisita { get; set; }
 
+        [Required]
+        public bool Validado { get; set; } 
+
         public Pergunta Pergunta { get; set; }
         public Paciente Paciente { get; set; }
     }

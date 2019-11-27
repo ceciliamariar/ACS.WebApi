@@ -4,15 +4,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace ACS.WebApi.Dominio.Entradas
+namespace ACS.WebApi.Dominio.Saidas
 {
-    public class Pergunta
+    public class RemedioSaida
     {
         [Key]
         public int Id { get; set; }
 
-        [StringLength(500)]
         [Required]
+        [StringLength(500)]
         public string Descricao { get; set; }
         
     }
