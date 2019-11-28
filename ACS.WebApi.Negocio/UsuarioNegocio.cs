@@ -57,28 +57,13 @@ namespace ACS.WebApi.Negocio
                    login += (this.RecuperaMaxId() + 1).ToString();
                }
                
-               Usuario usuario = new Usuario()
-               {
-                   Email = obj.Email,
-                   Login = login.ToLower(),
-                   Nome = obj.Nome,
-                   Perfil = obj.Perfil,
-                   TipoPessoa = obj.TipoPessoa,
-                   Senha = _criptografiaNegocio.Criptografa(obj.Senha)
-               };
-
+               var usuario = _mapper.Map<Usuario>(obj);
+               usuario.Senha = _criptografiaNegocio.Criptografa(obj.Senha);
+               usuario.Login = login;
                _Repositorio.Insert(usuario);
                _Repositorio.Commit();
 
-               return new UsuarioSaida()
-               {
-                   Email = usuario.Email,
-                   Login = usuario.Login,
-                   Nome = usuario.Nome,
-                   Perfil = usuario.Perfil,
-                   TipoPessoa = usuario.TipoPessoa,
-                   Id = usuario.Id
-               };
+               return _mapper.Map<UsuarioSaida>(usuario);
 
 
            });
@@ -141,12 +126,12 @@ namespace ACS.WebApi.Negocio
         }
 
 
-        public async Task<LoginEntrada> RetornaUsuarioLogado(string tokenEntrada)
+        public async Task<Login> RetornaUsuarioLogado(string tokenEntrada)
         {
-            return await Task<LoginEntrada>.Run(
+            return await Task<Login>.Run(
            () =>
            {
-               LoginEntrada login = new LoginEntrada();
+               Login login = new Login();
 
                JwtSecurityToken token = new JwtSecurityToken(jwtEncodedString: tokenEntrada.Replace("Bearer ", string.Empty));
                if (token.Claims.First(c => c.Type == ClaimTypes.Name) != null)
@@ -160,7 +145,11 @@ namespace ACS.WebApi.Negocio
                    login.Perfil = perfil;
 
                }
-               return new LoginEntrada();
+               var idUsuario = _Repositorio.Query(where: a => a.Login.ToUpper() == login.Login.ToUpper() &&  a.Perfil == login.Perfil).Select(a=>a.Id).FirstOrDefault();
+
+               login.iD = idUsuario;
+
+               return login;
 
            });
         }

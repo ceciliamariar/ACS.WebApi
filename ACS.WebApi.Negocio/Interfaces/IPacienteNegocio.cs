@@ -11,7 +11,7 @@ namespace ACS.WebApi.Negocio
     {
         Task<IList<PacienteSaida>> RecuperaPacientesPorNome(string nome);
 
-        Task<PacienteSaida> Insert(PacienteEntrada obj);
+        Task<PacienteSaida> Insert(PacienteEntrada obj, string token);
 
         Task Update(PacienteEntrada obj);
     }

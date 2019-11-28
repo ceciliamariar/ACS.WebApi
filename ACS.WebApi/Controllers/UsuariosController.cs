@@ -3,6 +3,7 @@ using ACS.WebApi.Dominio.Saidas;
 using ACS.WebApi.Negocio;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace ACS.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
     public class UsuariosController : ControllerBase
     {
         public IUsuarioNegocio UsuarioNegocio { get; set; }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ACS.WebApi.Dominio.Entradas;
 using ACS.WebApi.Dominio.Saidas;
 using ACS.WebApi.Negocio;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace ACS.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class EnderecosController : ControllerBase
     {
         public IEnderecoNegocio EnderecoNegocio { get; set; }
@@ -26,7 +28,7 @@ namespace ACS.WebApi.Controllers
         {
             try
             {
-                var retorno = await Task<IEnumerable<EnderecoSaida>>.Run(() => EnderecoNegocio.Insert(value));
+                var retorno = await Task<IEnumerable<EnderecoSaida>>.Run(() => EnderecoNegocio.Insert(value, HttpContext.Request.Headers["Authorization"].ToString()));
 
                 return Ok(retorno);
             }
@@ -42,7 +44,7 @@ namespace ACS.WebApi.Controllers
         {
             try
             {
-                Task.Run(() => EnderecoNegocio.Update(value));
+                Task.Run(() => EnderecoNegocio.Update(value, HttpContext.Request.Headers["Authorization"].ToString()));
 
                 return Ok();
             }

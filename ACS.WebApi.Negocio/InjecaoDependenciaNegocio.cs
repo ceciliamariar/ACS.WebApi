@@ -17,9 +17,8 @@ namespace ACS.WebApi.Negocio
             //services.AddScoped<IPacienteRemedioNegocio, PacienteRemedioNegocio>();
             services.AddScoped<IPacienteNegocio, PacienteNegocio>();
             services.AddScoped<IPerguntaNegocio, PerguntaNegocio>();
-            //services.AddScoped<IRemedioNegocio, RemedioNegocio>();
-            //services.AddScoped<IRespostaNegocio, RespostaNegocio>();
-            //services.AddScoped<IUsuarioNegocio, UsuarioNegocio>();
+            services.AddScoped<IRemedioNegocio, RemedioNegocio>();
+            services.AddScoped<IRespostaNegocio, RespostaNegocio>();
 
         }
 

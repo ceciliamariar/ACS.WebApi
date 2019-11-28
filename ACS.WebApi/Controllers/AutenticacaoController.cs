@@ -16,7 +16,7 @@ namespace ACS.WebApi.Controllers
     {
 
         private readonly IAutenticacaoNegocio _autenticacao;
-
+        
         public AutenticacaoController(IAutenticacaoNegocio autenticacao)
         {
             _autenticacao = autenticacao;

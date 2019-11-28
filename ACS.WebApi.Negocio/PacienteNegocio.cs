@@ -13,41 +13,32 @@ namespace ACS.WebApi.Negocio
     public class PacienteNegocio : Negocio<Paciente>, IPacienteNegocio
     {
         private readonly IMapper _mapper;
+        private IUsuarioNegocio UsuarioNegocio { get; set; }
+
 
         public PacienteNegocio(IPacienteRepositorio pacienteRepositorio,
+             IUsuarioNegocio usuarioNegocio,
                                IMapper mapper) : base(pacienteRepositorio)
         {
             _mapper = mapper;
+            UsuarioNegocio = usuarioNegocio;
         }
 
-        public async Task<PacienteSaida> Insert(PacienteEntrada obj)
+        public async Task<PacienteSaida> Insert(PacienteEntrada obj, string token)
         {
-            return await Task<PacienteSaida>.Run(() =>
+            return await Task<PacienteSaida>.Run(async () =>
             {
 
-                Paciente paciente = new Paciente()
-                {
-                    Nome = obj.Nome,
-                    Sexo = obj.Sexo,
-                    IdEndereco = obj.IdEndereco,
-                    Telefone = obj.Telefone,
-                    IdUsuario = (int)1, // recupera da requisição
-                    IdUsuarioUltimaAtualicao = (int)1, // recuperar da requisição
-                    DataNascimento = obj.DataNascimento
-                };
+                Login usuLogado =  await UsuarioNegocio.RetornaUsuarioLogado(token);
+
+                Paciente paciente = _mapper.Map<Paciente>(obj);
+                paciente.IdUsuario = usuLogado.iD;
+                paciente.IdUsuarioUltimaAtualicao = usuLogado.iD;
 
                 _Repositorio.Insert(paciente);
                 _Repositorio.Commit();
 
-                return new PacienteSaida()
-                {
-                    Id = paciente.Id,
-                    Nome = paciente.Nome,
-                    Sexo = paciente.Sexo,
-                    IdEndereco = paciente.IdEndereco,
-                    Telefone = paciente.Telefone,
-                    DataNascimento = paciente.DataNascimento
-                };
+                return _mapper.Map<PacienteSaida>(paciente);
             });
 
 

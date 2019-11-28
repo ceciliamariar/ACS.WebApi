@@ -10,13 +10,19 @@ namespace ACS.WebApi.Negocio
 {
     public class EnderecoNegocio : Negocio<Endereco>, IEnderecoNegocio
     {
-        public EnderecoNegocio(IEnderecoRepositorio enderecoRepositorio) : base(enderecoRepositorio)
+        private  IUsuarioNegocio UsuarioNegocio { get; set; }
+
+        public EnderecoNegocio(IEnderecoRepositorio enderecoRepositorio, IUsuarioNegocio usuarioNegocio) : base(enderecoRepositorio)
         {
+            UsuarioNegocio = usuarioNegocio;
         }
 
-        public async Task<EnderecoSaida> Insert(EnderecoEntrada obj)
+        public async Task<EnderecoSaida> Insert(EnderecoEntrada obj, string token)
         {
-            return await Task<EnderecoSaida>.Run(() => {
+            return await Task<EnderecoSaida>.Run(async () => {
+
+
+                Login usuLogado = await UsuarioNegocio.RetornaUsuarioLogado(token);
 
                 EnderecoSaida saida = null;
                 var endereco = new Endereco();
@@ -27,6 +33,8 @@ namespace ACS.WebApi.Negocio
                 endereco.Cidade = obj.Cidade;
                 endereco.Descricao = obj.Descricao;
                 endereco.GeoLocalizacao = obj.GeoLocalizacao;
+                endereco.IdUsuarioUltimaAtualicao = usuLogado.iD;
+                endereco.GeoLocalizacao = obj.GeoLocalizacao;
 
                 _Repositorio.Insert(endereco);
                 _Repositorio.Commit();
@@ -36,7 +44,7 @@ namespace ACS.WebApi.Negocio
 
         }
         
-        public async Task Update(EnderecoEntrada obj)
+        public async Task Update(EnderecoEntrada obj, string token)
         {
             await Task.Run(() =>
             {

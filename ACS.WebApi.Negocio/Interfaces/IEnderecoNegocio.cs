@@ -7,9 +7,9 @@ namespace ACS.WebApi.Negocio
     public interface IEnderecoNegocio
     {
 
-        Task<EnderecoSaida> Insert(EnderecoEntrada obj);
+        Task<EnderecoSaida> Insert(EnderecoEntrada obj, string token);
         
-        Task Update(EnderecoEntrada obj);
+        Task Update(EnderecoEntrada obj, string token);
         
     }
 }

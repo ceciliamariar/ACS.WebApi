@@ -14,5 +14,6 @@ namespace ACS.WebApi.Dominio.Entradas
 
         [Required]
         public PerfilUsuarioEnum Perfil { get; set; }
+
     }
 }

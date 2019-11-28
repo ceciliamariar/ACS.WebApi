@@ -4,7 +4,7 @@ namespace ACS.WebApi.Excecoes
 {
     public class UsuarioouSenhaInvalidoExcecao : Exception
     {
-        public UsuarioouSenhaInvalidoExcecao(string mensagem = "Usuario ou senha inválidos") : base(mensagem)
+        public UsuarioouSenhaInvalidoExcecao() : base("Usuario ou senha inválidos")
         {
         }
     }

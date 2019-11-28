@@ -32,7 +32,7 @@ namespace ACS.WebApi.Controllers
         {
             try
             {
-                var retorno = await Task<IEnumerable<PacienteSaida>>.Run(() => PacienteNegocio.Insert(value));
+                var retorno = await Task<IEnumerable<PacienteSaida>>.Run(() => PacienteNegocio.Insert(value, HttpContext.Request.Headers["Authorization"].ToString()));
 
                 return Ok(retorno);
             }
