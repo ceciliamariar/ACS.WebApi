@@ -9,7 +9,7 @@ namespace ACS.WebApi.Dominio.Enumeradores
         Cordenador = 1,
         Professor  = 2,
         Academico = 3,
-        VigilantePA = 3,
+        VigilantePA = 4
         
     }
 }

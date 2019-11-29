@@ -3,6 +3,7 @@ using ACS.WebApi.Excecoes;
 using ACS.WebApi.Negocio;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace ACS.WebApi.Controllers
 {
@@ -15,28 +16,27 @@ namespace ACS.WebApi.Controllers
     public class AutenticacaoController : ControllerBase
     {
 
-        private readonly IAutenticacaoNegocio _autenticacao;
+        private readonly IAutenticacaoNegocio _Autenticacao;
         
         public AutenticacaoController(IAutenticacaoNegocio autenticacao)
         {
-            _autenticacao = autenticacao;
+            _Autenticacao = autenticacao;
         }
 
         /// <summary>
-        ///  Soliciar token de acesso com duração de 1 hora
+        /// Serviço responsável por gerar token de acesso com duração de 2 horas
         /// </summary>
-        /// <param name="usuario"></param>
+        /// <param name="usuario">Usuário que deseja logar no sistemas</param>
         /// <returns></returns>
-        // POST: api/Autenticacao
         [AllowAnonymous]
         [HttpPost]
-        public async System.Threading.Tasks.Task<IActionResult> SolicitarTokenAsync([FromBody] LoginEntrada usuario)
+        public async Task<IActionResult> SolicitarTokenAsync([FromBody] LoginEntrada usuario)
         {
             try
             {
-                var token = await _autenticacao.SolicitarToken(usuario);
+                var token = await _Autenticacao.SolicitarToken(usuario);
 
-                return Ok(new { token });
+                return Ok(token);
 
             }
             catch (UsuarioouSenhaInvalidoExcecao)

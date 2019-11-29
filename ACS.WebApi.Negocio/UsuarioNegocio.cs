@@ -41,10 +41,12 @@ namespace ACS.WebApi.Negocio
                     return saida;
                 });
         }
-        public async Task<UsuarioSaida> Insert(UsuarioEntrada obj)
+        public async Task<UsuarioSaida> Insert(UsuarioEntrada obj, string token)
         {
-            return await Task<UsuarioSaida>.Run( () =>
+            return await Task<UsuarioSaida>.Run(async () =>
            {
+
+               Login usuLogado = await this.RetornaUsuarioLogado(token);
 
                string login = string.Concat(obj.Nome[0], ".");
 
@@ -60,6 +62,7 @@ namespace ACS.WebApi.Negocio
                var usuario = _mapper.Map<Usuario>(obj);
                usuario.Senha = _criptografiaNegocio.Criptografa(obj.Senha);
                usuario.Login = login;
+               usuario.IdUsuarioResponsavel = usuLogado.iD;
                _Repositorio.Insert(usuario);
                _Repositorio.Commit();
 
@@ -69,15 +72,18 @@ namespace ACS.WebApi.Negocio
            });
         }
 
-        public async Task Update(UsuarioEntrada obj)
+        public async Task Update(UsuarioEntrada obj, string token)
         {
-            await Task.Run(() =>
+            await Task.Run(async () =>
             {
+                Login usuLogado = await this.RetornaUsuarioLogado(token);
 
                 var usu = _Repositorio.Query(where: a => a.Login.ToUpper() == obj.Login.ToUpper()).FirstOrDefault();
 
                 usu.Email = obj.Email;
                 usu.Nome = obj.Nome;
+                usu.Perfil = obj.Perfil;
+                usu.IdUsuarioUltimaAtualicao = usuLogado.iD;
                 usu.Perfil = obj.Perfil;
                 usu.Senha = _criptografiaNegocio.Criptografa(obj.Senha);
 

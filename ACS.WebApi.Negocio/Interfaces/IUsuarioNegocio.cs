@@ -8,10 +8,10 @@ namespace ACS.WebApi.Negocio
     {
         Task<UsuarioSaida> RetornaUsuario(string login);
 
-        Task<UsuarioSaida> Insert(UsuarioEntrada obj);
+        Task<UsuarioSaida> Insert(UsuarioEntrada obj, string token);
 
         Task<bool> VerificaUsuario(LoginEntrada loginEntrada);
-        Task Update(UsuarioEntrada obj);
+        Task Update(UsuarioEntrada obj, string token);
 
         Task<Login> RetornaUsuarioLogado(string tokenEntrada);
     }

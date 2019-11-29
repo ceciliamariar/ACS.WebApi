@@ -5,6 +5,10 @@
     <OutputPath>..\ACS.WebApi.BaseDados\bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>..\ACS.WebApi.BaseDados\bin\Debug\ACS.WebApi.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>

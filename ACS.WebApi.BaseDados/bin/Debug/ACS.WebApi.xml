@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ACS.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:ACS.WebApi.Controllers.AutenticacaoController">
+            <summary>
+            Controlador responsável pela autenticação
+            </summary>
+        </member>
+        <member name="M:ACS.WebApi.Controllers.AutenticacaoController.SolicitarTokenAsync(ACS.WebApi.Dominio.Entradas.LoginEntrada)">
+            <summary>
+            Serviço responsável por gerar token de acesso com duração de 2 horas
+            </summary>
+            <param name="usuario">Usuário que deseja logar no sistemas</param>
+            <returns></returns>
+        </member>
+        <member name="M:ACS.WebApi.Controllers.EnderecosController.Post(ACS.WebApi.Dominio.Entradas.EnderecoEntrada)">
+            <summary>
+            Serviço responsável por cadastrar um endereço 
+            </summary>
+            <param name="endereco">Entidade de Endereço</param>
+            <returns></returns>
+        </member>
+        <member name="M:ACS.WebApi.Controllers.EnderecosController.Put(ACS.WebApi.Dominio.Entradas.EnderecoEntrada)">
+            <summary>
+            Serviço responsável por atulizar um endereço
+            </summary>
+            <param name="endereco">Entidade de Endereço</param>
+            <returns></returns>
+        </member>
+        <member name="M:ACS.WebApi.Controllers.PacientesController.Post(ACS.WebApi.Dominio.Entradas.PacienteEntrada)">
+            <summary>
+            Serviço responsável pelo cadastro de um novo paciente
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ACS.WebApi.Controllers.PacientesController.RecuperaPacientesPorNome(System.String)">
+            <summary>
+            Serviço responsável pela busca de pacientes pelo nome, deve ser informado pelo menos 3 letras do nome.
+            </summary>
+            <param name="nome"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ACS.WebApi.Controllers.PacientesController.RecuperaPacientesCompleto(System.Int32)">
+            <summary>
+            Serviço responsável pela busca de pacientes pelo identificador
+            </summary>
+            <param name="idPaciente"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ACS.WebApi.Controllers.PacientesController.RecuperaMedicoesPorPaciente(System.Int32)">
+            <summary>
+            Serviço responsável pela busca de medições do paciente
+            </summary>
+            <param name="idPaciente"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ACS.WebApi.Controllers.PacientesController.ResponderPergunta(System.Int32,System.Int32,ACS.WebApi.Dominio.Entradas.RespostaEntrada)">
+            <summary>
+            Serviço responsável pelo cadastro de respostas
+            </summary>
+            <param name="idPaciente">Identificador do paciente que respondeu a pergunta</param>
+            <param name="idPergunta">Identificador da pergunta</param>
+            <param name="respostaEntrada">Entidade com os dados respondidos pelo paciente</param>
+            <returns></returns>
+        </member>
+        <member name="M:ACS.WebApi.Controllers.PacientesController.CadastrarRemedioUtilizado(System.Int32,ACS.WebApi.Dominio.Entradas.PacienteRemedioEntrada)">
+            <summary>
+            Serviço responsável pelo cadastro de remedios para um paciente
+            </summary>
+            <param name="idPaciente">Identificador do paciente</param>
+            <param name="pacienteRemedioEntrada">Entidade com dados do remedio</param>
+            <returns></returns>
+        </member>
+        <member name="M:ACS.WebApi.Controllers.PacientesController.Put(ACS.WebApi.Dominio.Entradas.PacienteEntrada)">
+            <summary>
+            Serviço responsável pela edição de paciente
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ACS.WebApi.Controllers.PacientesController.Post(System.Int64,ACS.WebApi.Dominio.Entradas.MedicaoEntrada)">
+            <summary>
+            Serviço responsável pelo cadastro de medição
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ACS.WebApi.Controllers.PacientesController.Put(ACS.WebApi.Dominio.Entradas.MedicaoEntrada)">
+            <summary>
+            Serviço responsável pela edição de medição 
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ACS.WebApi.Controllers.PerguntasController.Post(ACS.WebApi.Dominio.Entradas.PerguntaEntrada)">
+            <summary>
+            Serviço responsável pelo cadastro de perguntas
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ACS.WebApi.Controllers.RemediosController.Post(ACS.WebApi.Dominio.Entradas.RemedioEntrada)">
+            <summary>
+            Serviço responsável pelo cadastro de remédios
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

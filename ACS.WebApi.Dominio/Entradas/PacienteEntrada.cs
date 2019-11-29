@@ -22,6 +22,8 @@ namespace ACS.WebApi.Dominio.Entradas
         [Required]
         public int IdEndereco { get; set; }
 
+        public int Id { get; set; }
+
 
     }
 }

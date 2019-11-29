@@ -15,28 +15,24 @@ namespace ACS.WebApi.Controllers
     
     public class UsuariosController : ControllerBase
     {
-        public IUsuarioNegocio UsuarioNegocio { get; set; }
+        public IUsuarioNegocio _UsuarioNegocio { get; set; }
+        public IMedicaoNegocio _MedicaoNegocio { get; set; }
 
-        public UsuariosController(IUsuarioNegocio _IUsuarioNegocio)
+        public UsuariosController(IUsuarioNegocio usuarioNegocio, IMedicaoNegocio medicaoNegocio)
         {
-            UsuarioNegocio = _IUsuarioNegocio;
+            _UsuarioNegocio = usuarioNegocio;
+            _MedicaoNegocio = medicaoNegocio;
         }
-        // GET api/values
-
+        
         [HttpGet]
         [Route("{login}")]
         public async Task<ActionResult<UsuarioSaida>> GetAsync(string login)
         {
             try
             {
-
-                //   LoginEntrada usuLogado  = await Task.Run(() => UsuarioNegocio.RetornaUsuarioLogado(HttpContext.Request.Headers["Authorization"].ToString()));
-
-
-                var retorno = await Task<UsuarioSaida>.Run(() => UsuarioNegocio.RetornaUsuario(login));
+                var retorno = await Task<UsuarioSaida>.Run(() => _UsuarioNegocio.RetornaUsuario(login));
 
                 return Ok(retorno);
-
             }
             catch (Exception)
             {
@@ -45,13 +41,12 @@ namespace ACS.WebApi.Controllers
             }
         }
 
-        // POST api/values
         [HttpPost]
         public async Task<ActionResult<UsuarioSaida>> Post([FromBody] UsuarioEntrada value)
         {
             try
             {
-                var retorno = await Task<IEnumerable<UsuarioSaida>>.Run(() => UsuarioNegocio.Insert(value));
+                var retorno = await Task<IEnumerable<UsuarioSaida>>.Run(() => _UsuarioNegocio.Insert(value, HttpContext.Request.Headers["Authorization"].ToString()));
 
                 return Ok(retorno);
             }
@@ -61,15 +56,13 @@ namespace ACS.WebApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
-
-
-        // POST api/values
+        
         [HttpPut]
         public async Task<ActionResult> Put([FromBody] UsuarioEntrada value)
         {
             try
             {
-                await UsuarioNegocio.Update(value);
+                await _UsuarioNegocio.Update(value, HttpContext.Request.Headers["Authorization"].ToString());
 
                 return Ok();
             }
@@ -80,6 +73,43 @@ namespace ACS.WebApi.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("/Medicoes/Pedentes")]
+        public async Task<ActionResult<UsuarioSaida>> RecuperaPendentesValidacao()
+        {
+            try
+            {
+                var retorno = await Task<UsuarioSaida>.Run(() => _MedicaoNegocio.RecuperaPendentesValidacao(HttpContext.Request.Headers["Authorization"].ToString()));
+
+                return Ok(retorno);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        [HttpGet]
+        [Route("/Medicoes/{idMedicao}/Validada/{comentario}")]
+        public async Task<ActionResult<UsuarioSaida>> ValidarMedicao(int idMedicao, string comentario)
+        {
+            try
+            {
+                var retorno = await Task<UsuarioSaida>.Run(() => _MedicaoNegocio.ValidarMedicao(idMedicao, comentario, HttpContext.Request.Headers["Authorization"].ToString()));
+
+                if (!retorno)
+                {
+                    return BadRequest();
+                }
+                return Ok();
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
 
         //GET -> SELECT
         //DELETE -> DELETE

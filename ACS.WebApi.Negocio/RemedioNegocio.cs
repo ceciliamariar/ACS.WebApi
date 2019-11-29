@@ -21,7 +21,7 @@ namespace ACS.WebApi.Negocio
             throw new NotImplementedException();
         }
 
-        public Task<RespostaSaida> Insert(RespostaEntrada obj)
+        public Task<RemedioSaida> Insert(RemedioEntrada obj)
         {
             throw new NotImplementedException();
         }

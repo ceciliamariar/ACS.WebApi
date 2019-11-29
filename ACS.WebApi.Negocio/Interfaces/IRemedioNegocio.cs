@@ -8,7 +8,7 @@ namespace ACS.WebApi.Negocio
     public interface IRemedioNegocio
     {
 
-        Task<RespostaSaida> Insert(RespostaEntrada obj);
+        Task<RemedioSaida> Insert(RemedioEntrada obj);
         
         Task Delete(int id);
         

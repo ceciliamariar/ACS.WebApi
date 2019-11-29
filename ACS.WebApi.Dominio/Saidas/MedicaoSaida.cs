@@ -11,9 +11,6 @@ namespace ACS.WebApi.Dominio.Saidas
         public int Id { get; set; }
 
         [Required]
-        public int IdPaciente { get; set; }
-
-        [Required]
         public DateTime DataHora { get; set; }
 
         [Required]
@@ -33,6 +30,9 @@ namespace ACS.WebApi.Dominio.Saidas
 
         [StringLength(500)]
         public string Comentario { get; set; }
-        
+
+        public UsuarioSaida UsuarioResponsavelCadastro { get; set; }
+        public PacienteSaida Paciente { get; set; }
+
     }
 }

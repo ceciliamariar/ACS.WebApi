@@ -11,8 +11,13 @@ namespace ACS.WebApi.Negocio
     {
         Task<IList<MedicaoSaida>> RecuperaPorPaciente(int idPaciente);
 
-        Task<MedicaoSaida> Insert(MedicaoEntrada obj);
+        Task<MedicaoSaida> Insert(MedicaoEntrada obj, string token);
 
-        Task Update(MedicaoEntrada obj);
+        Task<bool> Update(MedicaoEntrada obj);
+
+        Task<IList<MedicaoSaida>> RecuperaPendentesValidacao(string token);
+
+        Task<bool> ValidarMedicao(int idMedicao, string comentario, string token);
+
     }
 }

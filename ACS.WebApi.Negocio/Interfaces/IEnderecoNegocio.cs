@@ -9,7 +9,7 @@ namespace ACS.WebApi.Negocio
 
         Task<EnderecoSaida> Insert(EnderecoEntrada obj, string token);
         
-        Task Update(EnderecoEntrada obj, string token);
+        Task<bool> Update(EnderecoEntrada obj, string token);
         
     }
 }

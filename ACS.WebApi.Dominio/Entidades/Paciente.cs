@@ -23,11 +23,11 @@ namespace ACS.WebApi.Dominio.Entidades
         public char Sexo { get; set; }
         
         [Required]
-        [ForeignKey("FKEnderecoPaciente")]
+        [ForeignKey("Endereco")]
         public int IdEndereco { get; set; }
 
         [Required]
-        [ForeignKey("FKResponsavelPaciente")]
+        [ForeignKey("UsuarioResponsavel")]
         public int IdUsuario { get; set; }
 
         [Required]
@@ -38,6 +38,8 @@ namespace ACS.WebApi.Dominio.Entidades
 
         public List<PacienteRemedio> PacienteRemedios { get; set; }
         public List<Resposta> Respostas { get; set; }
-        
+
+
+
     }
 }

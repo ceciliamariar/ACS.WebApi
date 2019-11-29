@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 namespace ACS.WebApi
@@ -105,12 +106,7 @@ namespace ACS.WebApi
                 {
                     Title = "Agente Comunitário de Saúde - Web API",
                     Version = "v1",
-                    Description = "ASP.NET Core Web API para o monitoramento da saúde de pacientes",
-                    Contact = new Contact
-                    {
-                        Name = "Maria Cecília Pereira Rodrigues",
-                        Email = "cecilia.mariar2@gmail.com"
-                    }
+                    Description = "WEB Api .Net Core para atender a demanda de monitoramento de dados relativos a saúde de moradores do bairro do bairro Parque São João, necessária para projeto de extensão do curso de medicina da PUC Contagem",
                 });
                 var security = new Dictionary<string, IEnumerable<string>>
                 {
@@ -128,6 +124,9 @@ namespace ACS.WebApi
                     });
 
                 c.AddSecurityRequirement(security);
+                // Configure Swagger to use the xml documentation file
+                var xmlFile = Path.ChangeExtension(typeof(Startup).Assembly.Location, ".xml");
+                c.IncludeXmlComments(xmlFile);
             });
 
             services.AddAutoMapper( typeof(MapperEntrada), typeof(MapperSaida));

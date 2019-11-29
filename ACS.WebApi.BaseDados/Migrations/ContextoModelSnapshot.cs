@@ -49,11 +49,9 @@ namespace ACS.WebApi.BaseDados.Migrations
 
                     b.Property<int>("Numero");
 
-                    b.Property<int?>("UsuarioUltimaAtualizacaoId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UsuarioUltimaAtualizacaoId");
+                    b.HasIndex("IdUsuarioUltimaAtualicao");
 
                     b.ToTable("Enderecos");
                 });
@@ -77,27 +75,27 @@ namespace ACS.WebApi.BaseDados.Migrations
 
                     b.Property<int>("IdPaciente");
 
+                    b.Property<int>("IdResponsavelCadastro");
+
                     b.Property<int>("IdUsuarioUltimaAtualicao");
 
                     b.Property<int>("PAdist");
 
                     b.Property<int>("PAsist");
 
-                    b.Property<int>("PacienteId");
-
                     b.Property<bool>("Pedido");
 
                     b.Property<bool>("Rotina");
-
-                    b.Property<int?>("UsuarioUltimaAtualizacaoId");
 
                     b.Property<bool>("Validado");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PacienteId");
+                    b.HasIndex("IdPaciente");
 
-                    b.HasIndex("UsuarioUltimaAtualizacaoId");
+                    b.HasIndex("IdResponsavelCadastro");
+
+                    b.HasIndex("IdUsuarioUltimaAtualicao");
 
                     b.ToTable("Medicoes");
                 });
@@ -113,8 +111,6 @@ namespace ACS.WebApi.BaseDados.Migrations
                     b.Property<DateTime?>("DataNascimento");
 
                     b.Property<DateTime>("DataUltimaAtulizacao");
-
-                    b.Property<int>("EnderecoId");
 
                     b.Property<int>("IdEndereco");
 
@@ -134,17 +130,13 @@ namespace ACS.WebApi.BaseDados.Migrations
                     b.Property<string>("Telefone")
                         .HasMaxLength(14);
 
-                    b.Property<int>("UsuarioResponsavelId");
-
-                    b.Property<int?>("UsuarioUltimaAtualizacaoId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("EnderecoId");
+                    b.HasIndex("IdEndereco");
 
-                    b.HasIndex("UsuarioResponsavelId");
+                    b.HasIndex("IdUsuario");
 
-                    b.HasIndex("UsuarioUltimaAtualizacaoId");
+                    b.HasIndex("IdUsuarioUltimaAtualicao");
 
                     b.ToTable("Pacientes");
                 });
@@ -163,21 +155,16 @@ namespace ACS.WebApi.BaseDados.Migrations
 
                     b.Property<DateTime>("DataVisita");
 
+                    b.Property<string>("Descricao")
+                        .IsRequired();
+
                     b.Property<int>("IdUsuarioUltimaAtualicao");
-
-                    b.Property<int?>("PacienteId");
-
-                    b.Property<int?>("RemedioId");
-
-                    b.Property<int?>("UsuarioUltimaAtualizacaoId");
 
                     b.HasKey("IdPaciente", "IdRemedio");
 
-                    b.HasIndex("PacienteId");
+                    b.HasIndex("IdRemedio");
 
-                    b.HasIndex("RemedioId");
-
-                    b.HasIndex("UsuarioUltimaAtualizacaoId");
+                    b.HasIndex("IdUsuarioUltimaAtualicao");
 
                     b.ToTable("PacientesRemedios");
                 });
@@ -198,11 +185,9 @@ namespace ACS.WebApi.BaseDados.Migrations
 
                     b.Property<int>("IdUsuarioUltimaAtualicao");
 
-                    b.Property<int?>("UsuarioUltimaAtualizacaoId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UsuarioUltimaAtualizacaoId");
+                    b.HasIndex("IdUsuarioUltimaAtualicao");
 
                     b.ToTable("Perguntas");
                 });
@@ -223,11 +208,9 @@ namespace ACS.WebApi.BaseDados.Migrations
 
                     b.Property<int>("IdUsuarioUltimaAtualicao");
 
-                    b.Property<int?>("UsuarioUltimaAtualizacaoId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UsuarioUltimaAtualizacaoId");
+                    b.HasIndex("IdUsuarioUltimaAtualicao");
 
                     b.ToTable("Remedios");
                 });
@@ -246,25 +229,21 @@ namespace ACS.WebApi.BaseDados.Migrations
 
                     b.Property<DateTime>("DataVisita");
 
+                    b.Property<int>("IdResponsavelCadastro");
+
                     b.Property<int>("IdUsuarioUltimaAtualicao");
 
-                    b.Property<int?>("PacienteId");
-
-                    b.Property<int?>("PerguntaId");
-
                     b.Property<bool>("Respost");
-
-                    b.Property<int?>("UsuarioUltimaAtualizacaoId");
 
                     b.Property<bool>("Validado");
 
                     b.HasKey("IdPaciente", "IdPergunta");
 
-                    b.HasIndex("PacienteId");
+                    b.HasIndex("IdPergunta");
 
-                    b.HasIndex("PerguntaId");
+                    b.HasIndex("IdResponsavelCadastro");
 
-                    b.HasIndex("UsuarioUltimaAtualizacaoId");
+                    b.HasIndex("IdUsuarioUltimaAtualicao");
 
                     b.ToTable("Respostas");
                 });
@@ -282,6 +261,8 @@ namespace ACS.WebApi.BaseDados.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(100);
+
+                    b.Property<int>("IdUsuarioResponsavel");
 
                     b.Property<int>("IdUsuarioUltimaAtualicao");
 
@@ -301,11 +282,11 @@ namespace ACS.WebApi.BaseDados.Migrations
 
                     b.Property<int>("TipoPessoa");
 
-                    b.Property<int?>("UsuarioUltimaAtualizacaoId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UsuarioUltimaAtualizacaoId");
+                    b.HasIndex("IdUsuarioResponsavel");
+
+                    b.HasIndex("IdUsuarioUltimaAtualicao");
 
                     b.ToTable("Usuarios");
                 });
@@ -314,7 +295,7 @@ namespace ACS.WebApi.BaseDados.Migrations
                 {
                     b.HasOne("ACS.WebApi.Dominio.Entidades.Usuario", "UsuarioUltimaAtualizacao")
                         .WithMany()
-                        .HasForeignKey("UsuarioUltimaAtualizacaoId")
+                        .HasForeignKey("IdUsuarioUltimaAtualicao")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
@@ -322,12 +303,17 @@ namespace ACS.WebApi.BaseDados.Migrations
                 {
                     b.HasOne("ACS.WebApi.Dominio.Entidades.Paciente", "Paciente")
                         .WithMany()
-                        .HasForeignKey("PacienteId")
+                        .HasForeignKey("IdPaciente")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("ACS.WebApi.Dominio.Entidades.Usuario", "UsuarioResponsavelCadastro")
+                        .WithMany()
+                        .HasForeignKey("IdResponsavelCadastro")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("ACS.WebApi.Dominio.Entidades.Usuario", "UsuarioUltimaAtualizacao")
                         .WithMany()
-                        .HasForeignKey("UsuarioUltimaAtualizacaoId")
+                        .HasForeignKey("IdUsuarioUltimaAtualicao")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
@@ -335,17 +321,17 @@ namespace ACS.WebApi.BaseDados.Migrations
                 {
                     b.HasOne("ACS.WebApi.Dominio.Entidades.Endereco", "Endereco")
                         .WithMany("Pacientes")
-                        .HasForeignKey("EnderecoId")
+                        .HasForeignKey("IdEndereco")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("ACS.WebApi.Dominio.Entidades.Usuario", "UsuarioResponsavel")
                         .WithMany()
-                        .HasForeignKey("UsuarioResponsavelId")
+                        .HasForeignKey("IdUsuario")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("ACS.WebApi.Dominio.Entidades.Usuario", "UsuarioUltimaAtualizacao")
                         .WithMany()
-                        .HasForeignKey("UsuarioUltimaAtualizacaoId")
+                        .HasForeignKey("IdUsuarioUltimaAtualicao")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
@@ -353,17 +339,17 @@ namespace ACS.WebApi.BaseDados.Migrations
                 {
                     b.HasOne("ACS.WebApi.Dominio.Entidades.Paciente", "Paciente")
                         .WithMany("PacienteRemedios")
-                        .HasForeignKey("PacienteId")
+                        .HasForeignKey("IdPaciente")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("ACS.WebApi.Dominio.Entidades.Remedio", "Remedio")
                         .WithMany("PacientesRemedio")
-                        .HasForeignKey("RemedioId")
+                        .HasForeignKey("IdRemedio")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("ACS.WebApi.Dominio.Entidades.Usuario", "UsuarioUltimaAtualizacao")
                         .WithMany()
-                        .HasForeignKey("UsuarioUltimaAtualizacaoId")
+                        .HasForeignKey("IdUsuarioUltimaAtualicao")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
@@ -371,7 +357,7 @@ namespace ACS.WebApi.BaseDados.Migrations
                 {
                     b.HasOne("ACS.WebApi.Dominio.Entidades.Usuario", "UsuarioUltimaAtualizacao")
                         .WithMany()
-                        .HasForeignKey("UsuarioUltimaAtualizacaoId")
+                        .HasForeignKey("IdUsuarioUltimaAtualicao")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
@@ -379,7 +365,7 @@ namespace ACS.WebApi.BaseDados.Migrations
                 {
                     b.HasOne("ACS.WebApi.Dominio.Entidades.Usuario", "UsuarioUltimaAtualizacao")
                         .WithMany()
-                        .HasForeignKey("UsuarioUltimaAtualizacaoId")
+                        .HasForeignKey("IdUsuarioUltimaAtualicao")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
@@ -387,25 +373,35 @@ namespace ACS.WebApi.BaseDados.Migrations
                 {
                     b.HasOne("ACS.WebApi.Dominio.Entidades.Paciente", "Paciente")
                         .WithMany("Respostas")
-                        .HasForeignKey("PacienteId")
+                        .HasForeignKey("IdPaciente")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("ACS.WebApi.Dominio.Entidades.Pergunta", "Pergunta")
                         .WithMany("Respostas")
-                        .HasForeignKey("PerguntaId")
+                        .HasForeignKey("IdPergunta")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("ACS.WebApi.Dominio.Entidades.Usuario", "UsuarioResponsavelCadastro")
+                        .WithMany()
+                        .HasForeignKey("IdResponsavelCadastro")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("ACS.WebApi.Dominio.Entidades.Usuario", "UsuarioUltimaAtualizacao")
                         .WithMany()
-                        .HasForeignKey("UsuarioUltimaAtualizacaoId")
+                        .HasForeignKey("IdUsuarioUltimaAtualicao")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("ACS.WebApi.Dominio.Entidades.Usuario", b =>
                 {
+                    b.HasOne("ACS.WebApi.Dominio.Entidades.Usuario", "UsuarioResponsavel")
+                        .WithMany()
+                        .HasForeignKey("IdUsuarioResponsavel")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("ACS.WebApi.Dominio.Entidades.Usuario", "UsuarioUltimaAtualizacao")
                         .WithMany()
-                        .HasForeignKey("UsuarioUltimaAtualizacaoId")
+                        .HasForeignKey("IdUsuarioUltimaAtualicao")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618

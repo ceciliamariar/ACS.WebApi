@@ -13,20 +13,25 @@ namespace ACS.WebApi.Controllers
     [ApiController]
     public class PerguntasController : ControllerBase
     {
-        public IPerguntaNegocio PerguntaNegocio { get; set; }
+        public IPerguntaNegocio _PerguntaNegocio { get; set; }
 
-        public PerguntasController(IPerguntaNegocio _IPerguntaNegocio)
+        public PerguntasController(IPerguntaNegocio perguntaNegocio)
         {
-            PerguntaNegocio = _IPerguntaNegocio;
+            _PerguntaNegocio = perguntaNegocio;
         }
 
+        /// <summary>
+        /// Serviço responsável pelo cadastro de perguntas
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         // POST api/values
         [HttpPost]
         public async Task<ActionResult<PerguntaSaida>> Post([FromBody] PerguntaEntrada value)
         {
             try
             {
-                var retorno = await Task<IEnumerable<PerguntaSaida>>.Run(() => PerguntaNegocio.Insert(value));
+                var retorno = await Task<IEnumerable<PerguntaSaida>>.Run(() => _PerguntaNegocio.Insert(value));
 
                 return Ok(retorno);
             }
@@ -38,23 +43,23 @@ namespace ACS.WebApi.Controllers
         }
 
 
-        // POST api/values
-        [HttpDelete]
-        [Route("{id}")]
-        public async Task<ActionResult> Delete( int id)
-        {
-            try
-            {
-                await PerguntaNegocio.Delete(id);
 
-                return Ok();
-            }
-            catch (Exception)
-            {
+        //[HttpDelete]
+        //[Route("{id}")]
+        //public async Task<ActionResult> Delete( int id)
+        //{
+        //    try
+        //    {
+        //        await PerguntaNegocio.Delete(id);
 
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
-        }
+        //        return Ok();
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        return StatusCode(StatusCodes.Status500InternalServerError);
+        //    }
+        //}
 
 
         //GET -> SELECT

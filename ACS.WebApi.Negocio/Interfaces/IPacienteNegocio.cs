@@ -13,6 +13,11 @@ namespace ACS.WebApi.Negocio
 
         Task<PacienteSaida> Insert(PacienteEntrada obj, string token);
 
-        Task Update(PacienteEntrada obj);
+        Task<bool> Update(PacienteEntrada obj);
+
+        Task<PacienteDetalheSaida> RecuperaPaciente(int idPaciente);
+
+        Task<PacienteRemedioSaida> CadastrarRemedio(PacienteRemedioEntrada pacienteRemedioEntrada, string token);
+
     }
 }

@@ -10,11 +10,11 @@ namespace ACS.WebApi.Dominio.Entidades
     {
 
         [Key]
-        [ForeignKey("FKPacienteResposta")]
+        [ForeignKey("Paciente")]
         public int IdPaciente { get; set; }
 
         [Key]
-        [ForeignKey("FKPerguntaResposta")]
+        [ForeignKey("Pergunta")]
         public int IdPergunta { get; set; }
 
         [Required]
@@ -29,5 +29,13 @@ namespace ACS.WebApi.Dominio.Entidades
 
         public Pergunta Pergunta { get; set; }
         public Paciente Paciente { get; set; }
+
+        [Required]
+        [ForeignKey("UsuarioResponsavelCadastro")]
+        public int IdResponsavelCadastro { get; set; }
+
+        [Required]
+        public Usuario UsuarioResponsavelCadastro { get; set; }
+
     }
 }

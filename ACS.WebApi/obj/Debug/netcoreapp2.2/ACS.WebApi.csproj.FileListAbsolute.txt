@@ -13,3 +13,4 @@ C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi\obj\Debug\netc
 C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi\obj\Debug\netcoreapp2.2\ACS.WebApi.csproj.CopyComplete
 C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi\obj\Debug\netcoreapp2.2\ACS.WebApi.dll
 C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi\obj\Debug\netcoreapp2.2\ACS.WebApi.pdb
+C:\Users\cecilia.mariar\source\repos\TCC\ACS.WebApi-v1\ACS.WebApi.BaseDados\bin\Debug\netcoreapp2.2\ACS.WebApi.xml

@@ -25,6 +25,12 @@ namespace ACS.WebApi.Dominio.Entidades
         public PerfilUsuarioEnum Perfil { get; set; }
         [Required]
         public TipoPessoaEnum TipoPessoa { get; set; }
-        
+
+
+        [ForeignKey("UsuarioResponsavel")]
+        public int IdUsuarioResponsavel { get; set; }
+        public Usuario UsuarioResponsavel { get; set; }
+
+
     }
 }

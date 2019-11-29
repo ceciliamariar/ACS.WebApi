@@ -30,14 +30,20 @@ namespace ACS.WebApi.Dominio.Entidades
         public bool Validado { get; set; }
 
 
-        [ForeignKey("FKPacienteMedicao")]
+        [ForeignKey("Paciente")]
         [Required]
         public int IdPaciente { get; set; }
-
-
+        
         [Required]
         public Paciente Paciente { get; set; }
 
+        [Required]
+        [ForeignKey("UsuarioResponsavelCadastro")]
+        public int IdResponsavelCadastro { get; set; }
+
+
+        [Required]
+        public Usuario UsuarioResponsavelCadastro { get; set; }
 
     }
 }

@@ -44,11 +44,16 @@ namespace ACS.WebApi.Negocio
 
         }
         
-        public async Task Update(EnderecoEntrada obj, string token)
+        public async Task<bool> Update(EnderecoEntrada obj, string token)
         {
-            await Task.Run(() =>
+           return await Task.Run(() =>
             {
                 var endereco = _Repositorio.Query(where: a => a.Id == obj.Id).FirstOrDefault();
+
+                if (endereco == null || endereco.DataCriacao < DateTime.Now.AddHours(-1))
+                {
+                    return false;
+                }
 
                 endereco.Numero = obj.Numero;
                 endereco.Bairro = obj.Bairro;
@@ -59,6 +64,7 @@ namespace ACS.WebApi.Negocio
 
                 _Repositorio.Update(endereco);
                 _Repositorio.Commit();
+                return true;
             });
         }
 
